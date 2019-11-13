@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+
+<launch>
+
+    <!-- <arg name="scanner" default="scanner" /> -->
+    <arg name="scanner" default="" />
+
+    <!-- run laserscan_to_pointcloud node -->
+    <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pointcloud_to_laserscan">
+
+        <!-- <remap from="scan_in" to="$(arg scanner)/scan"/> -->
+        <remap from="cloud_in" to="/camera/depth_registered/points"/>
+        <!--<remap from="cloud" to=""/> -->
+        <rosparam>
+            target_frame: camera_link # Leave disabled to output pointcloud in scan frame
+            transform_tolerance: 0.1
+
+            # Concurrency level, affects number of pointclouds queued for processing and number of threads used
+            # 0 : Detect number of cores
+            # 1 : Single threaded
+            # 2->inf : Parallelism level
+            concurrency_level: 0
+        </rosparam>
+
+    </node>
+
+</launch>
