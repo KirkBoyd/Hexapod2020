@@ -7,6 +7,6 @@ void setup() {
 
 void loop() {
   SetPosition(1,512);
-  SetPosition(7,400);
-  SetPosition(13,400);
+  SetPosition(7,512);
+  SetPosition(13,512);
 }
