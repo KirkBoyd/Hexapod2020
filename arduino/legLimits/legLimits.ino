@@ -41,18 +41,31 @@
 #define TMLdef 512
 #define TFLdef 512
 
-#define CFRmin 390
-#define CFRmax 680 
-#define CMRmin 420
-#define CMRmax 650 
-#define CRRmin 360
-#define CRRmax 680 
-#define CRLmin 360
-#define CRLmax 650 
-#define CMLmin 420
-#define CMLmax 575 
-#define CFLmin 360
-#define CFLmax 650 
+#define CFRmin 390  //fwd
+#define CFRmax 680  //back
+#define CMRmin 420  //fwd
+#define CMRmax 650  //back
+#define CRRmin 360  //fwd
+#define CRRmax 680  //back
+#define CRLmin 360  //back
+#define CRLmax 650  //fwd
+#define CMLmin 420  //back
+#define CMLmax 575  //fwd
+#define CFLmin 360  //back
+#define CFLmax 650  //fwd
+
+#define CFRfwd 384  //fwd
+#define CFRback 640  //back
+#define CMRfwd 448  //fwd
+#define CMRback 640  //back
+#define CRRfwd 384  //fwd
+#define CRRback 640  //back
+#define CRLback 384  //back
+#define CRLfwd 640  //fwd
+#define CMLback 448  //back
+#define CMLfwd 576  //fwd
+#define CFLback 384  //back
+#define CFLfwd 640  //fwd
 
 #define TFRmin 400//up
 #define TFRmax 600//down
@@ -80,7 +93,6 @@
 #define TFLdown 448//down
 #define TFLup 600//up
 
-
 #define FFRmin 400//down
 #define FFRmax 640//up
 #define FMRmin 448//up **DO NOT EXCEED**POWER HUB AT MAX**
@@ -94,7 +106,6 @@
 #define FFLmin 448//up
 #define FFLmax 600//down
 
-
 #define FFRdown 400//down
 #define FFRup 640//up
 #define FMRup 448//up
@@ -107,21 +118,25 @@
 #define FMLup 600//up
 #define FFLup 448//up
 #define FFLdown 600//down
+
+
 void setup() {
   Serial.begin(9600);
+  stand();
+  delay(1500);
   
 }
 
 void loop() {
+  fwd();
   //relaxAll();
   //coxCtr();
   //toesUp();
   
-  stand();
-  //femUp();
-
-  delay(500);
-  relaxAll();
-  SetPosition(FML,620);
-  delay(1000);
+//  stand();
+//  //femUp();
+//
+//  delay(500);
+//  relaxAll();
+//  delay(1000);
 }
