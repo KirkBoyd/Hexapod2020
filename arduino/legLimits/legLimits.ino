@@ -87,7 +87,6 @@ void setup() {
 }
 
 void loop() {
-  //SetPosition(CFR,512);
-  stand();
-
+  SetPosition(CFR,512);
+  //stand();
 }
