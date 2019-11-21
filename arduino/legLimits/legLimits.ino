@@ -18,7 +18,7 @@
 #define TFR 13
 #define TMR 14
 #define TRR 15
-#define TLL 16
+#define TRL 16
 #define TML 17
 #define TFL 18
 
@@ -37,56 +37,91 @@
 #define TFRdef 512
 #define TMRdef 512
 #define TRRdef 512
-#define TLLdef 512
+#define TRLdef 512
 #define TMLdef 512
 #define TFLdef 512
 
-#define CFRmin 0
-#define CFRmax 0 
-#define CMRmin 0
-#define CMRmax 0 
-#define CRRmin 0
-#define CRRmax 0 
-#define CRLmin 0
-#define CRLmax 0 
-#define CMLmin 0
-#define CMLmax 0 
-#define CFLmin 0
-#define CFLmax 0 
+#define CFRmin 390
+#define CFRmax 680 
+#define CMRmin 420
+#define CMRmax 650 
+#define CRRmin 360
+#define CRRmax 680 
+#define CRLmin 360
+#define CRLmax 650 
+#define CMLmin 420
+#define CMLmax 575 
+#define CFLmin 360
+#define CFLmax 650 
 
-#define FFRmin 0
-#define FFRmax 0
-#define FMRmin 0
-#define FMRmax 0
-#define FRRmin 0
-#define FRRmax 0
-#define FRLmin 0
-#define FRLmax 0
-#define FMLmin 0
-#define FMLmax 0
-#define FFLmin 0
-#define FFLmax 0
+#define TFRmin 400//up
+#define TFRmax 600//down
+#define TMRmin 450//down
+#define TMRmax 620//up
+#define TRRmin 410//down
+#define TRRmax 610//up
+#define TRLmin 420//up
+#define TRLmax 600//down
+#define TMLmin 420//up
+#define TMLmax 600//down
+#define TFLmin 420//down
+#define TFLmax 600//up
+
+#define TFRup 400//up
+#define TFRdown 576//down
+#define TMRdown 448//down
+#define TMRup 600//up
+#define TRRdown 448//down
+#define TRRup 610//up
+#define TRLup 420//up
+#define TRLdown 576//down
+#define TMLup 420//up
+#define TMLdown 576//down
+#define TFLdown 448//down
+#define TFLup 600//up
 
 
-#define TFRmin 0
-#define TFRmax 0
-#define TMRmin 0
-#define TMRmax 0
-#define TRRmin 0
-#define TRRmax 0
-#define TRLmin 0
-#define TRLmax 0
-#define TMLmin 0
-#define TMLmax 0
-#define TFLmin 0
-#define TFLmax 0
+#define FFRmin 400//down
+#define FFRmax 640//up
+#define FMRmin 448//up **DO NOT EXCEED**POWER HUB AT MAX**
+#define FMRmax 600//down
+#define FRRmin 448//UP
+#define FRRmax 620//dOWN
+#define FRLmin 420//DOWN
+#define FRLmax 640//UP
+#define FMLmin 400//DOWN
+#define FMLmax 620//up **DO NOT EXCEED**POWER HUB AT MAX**
+#define FFLmin 448//up
+#define FFLmax 600//down
 
+
+#define FFRdown 400//down
+#define FFRup 640//up
+#define FMRup 448//up
+#define FMRdown 600//down
+#define FRRup 448//UP
+#define FRRdown 620//dOWN
+#define FRLdown 420//DOWN
+#define FRLup 640//UP
+#define FMLdown 400//DOWN
+#define FMLup 600//up
+#define FFLup 448//up
+#define FFLdown 600//down
 void setup() {
   Serial.begin(9600);
   
 }
 
 void loop() {
-  SetPosition(CFR,512);
-  //stand();
+  //relaxAll();
+  //coxCtr();
+  //toesUp();
+  
+  stand();
+  //femUp();
+
+  delay(500);
+  relaxAll();
+  SetPosition(FML,620);
+  delay(1000);
 }
