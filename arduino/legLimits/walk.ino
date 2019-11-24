@@ -1,16 +1,16 @@
 void fwd(){
   evensDown();
-  delay(1000);
+  delay(waitTime);
   oddsUp();
   oddsFwd();
   evensBack();
-  delay(1000);
+  delay(waitTime);
   oddsDown();
-  delay(1000);
+  delay(waitTime);
   evensUp();
   evensFwd();
   oddsBack();
-  delay(1000);
+  delay(waitTime);
 }
 void oddsFwd(){
   SetPosition(CFR, CFRfwd);

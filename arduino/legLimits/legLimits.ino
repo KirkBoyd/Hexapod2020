@@ -3,6 +3,8 @@
 //ensure the connection is plugged into both digital ports 18 [TXD1] and 19 [RXD1]
 //on the DFROBOT Bluno Mega 2560 */
 
+#define waitTime 100
+
 #define CFR 1
 #define CMR 2
 #define CRR 3
@@ -54,18 +56,18 @@
 #define CFLmin 360  //back
 #define CFLmax 650  //fwd
 
-#define CFRfwd 384  //fwd
-#define CFRback 640  //back
+#define CFRfwd 448  //fwd
+#define CFRback 576  //back
 #define CMRfwd 448  //fwd
-#define CMRback 640  //back
-#define CRRfwd 384  //fwd
-#define CRRback 640  //back
-#define CRLback 384  //back
-#define CRLfwd 640  //fwd
+#define CMRback 576  //back
+#define CRRfwd 448  //fwd
+#define CRRback 576  //back
+#define CRLback 448  //back
+#define CRLfwd 576  //fwd
 #define CMLback 448  //back
 #define CMLfwd 576  //fwd
-#define CFLback 384  //back
-#define CFLfwd 640  //fwd
+#define CFLback 448  //back
+#define CFLfwd 576  //fwd
 
 #define TFRmin 400//up
 #define TFRmax 600//down
@@ -101,23 +103,23 @@
 #define FRRmax 620//dOWN
 #define FRLmin 420//DOWN
 #define FRLmax 640//UP
-#define FMLmin 400//DOWN
+#define FMLmin 420//DOWN
 #define FMLmax 620//up **DO NOT EXCEED**POWER HUB AT MAX**
 #define FFLmin 448//up
 #define FFLmax 600//down
 
-#define FFRdown 400//down
-#define FFRup 640//up
-#define FMRup 448//up
-#define FMRdown 600//down
-#define FRRup 448//UP
-#define FRRdown 620//dOWN
-#define FRLdown 420//DOWN
-#define FRLup 640//UP
-#define FMLdown 400//DOWN
-#define FMLup 600//up
-#define FFLup 448//up
-#define FFLdown 600//down
+#define FFRdown 432//down
+#define FFRup 512//up
+#define FMRup 512//up
+#define FMRdown 592//down
+#define FRRup 512//UP
+#define FRRdown 592//dOWN
+#define FRLdown 432//DOWN
+#define FRLup 512//UP
+#define FMLdown 432//DOWN
+#define FMLup 512//up
+#define FFLup 512//up
+#define FFLdown 592//down
 
 
 void setup() {
