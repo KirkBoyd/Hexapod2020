@@ -1,15 +1,16 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="DOCK_IXX" value="0.00531683333333"/>
-    <xacro:property name="DOCK_IYY" value="0.00531683333333"/>
-    <xacro:property name="DOCK_IZZ" value="0.010143"/>
+    <xacro:property name="HEX_IXX" value="0.00531683333333"/>
+    <xacro:property name="HEX_IYY" value="0.00531683333333"/>
+    <xacro:property name="HEX_IZZ" value="0.010143"/>
 <!--Physical properties of material-->
-    <xacro:property name="DOCK_MU1" value="10.0"/>  <!-- Frictions -->
-    <xacro:property name="DOCK_MU2" value="10.0"/>
-    <xacro:property name="DOCK_KP" value="10000.0"/> <!-- Static contact stiffness. This determines if the link material is closer to marble (very rigid, bigger values) or more like rubber (soft material, lower values). -->
-    <xacro:property name="DOCK_KD" value="10000.0"/> <!-- Dynamic contact stiffness. This determines if the link material is closer to marble (very rigid, bigger values) or more like rubber (soft material, lower values). It's essentially how much it deforms over a long period of time, exerting its pressure. -->
+    <xacro:property name="HEX_MU1" value="10.0"/>  <!-- Frictions -->
+    <xacro:property name="HEX_MU2" value="10.0"/>
+    <xacro:property name="HEX_KP" value="10000.0"/> <!-- Static contact stiffness. This determines if the link material is closer to marble (very rigid, bigger values) or more like rubber (soft material, lower values). -->
+    <xacro:property name="HEX_KD" value="10000.0"/> <!-- Dynamic contact stiffness. This determines if the link material is closer to marble (very rigid, bigger values) or more like rubber (soft material, lower values). It's essentially how much it deforms over a long period of time, exerting its pressure. -->
 
+    <xacro:property name="SCALE" value="0.001"/>
 
 <!-- ################################################################## -->
 <!-- ############################ MATH ################################ -->
@@ -44,6 +45,12 @@
         </geometry>
     </xacro:macro>
 
+<!--########################## STL XACRO ##########################-->
+    <xacro:macro name="add_stl" params="scale fname">
+        <geometry>
+            <mesh filename="package://hexapod/urdf/models/${fname}.stl" scale="${scale} ${scale} ${scale}"/>
+        </geometry>
+    </xacro:macro>
 
 <!--######################## MINIMUM INERTIA XACRO ########################-->
     <xacro:macro name="MINIMUM_INERTIAL">

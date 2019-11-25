@@ -1,5 +1,35 @@
 <?xml version="1.0"?>
-<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="hexapod" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find hexapod)/urdf/general.urdf.xacro"/>
+    <xacro:include filename="$(find hexapod)/urdf/body.urdf.xacro"/>
+    <xacro:include filename="$(find hexapod)/urdf/cox.urdf.xacro"/>
+    <xacro:include filename="$(find hexapod)/urdf/femur.urdf.xacro"/>
+    <!-- <xacro:include filename="$(find hexapod)/urdf/hexapod.gazebo" /> -->
+
+    <!-- Footprint link -->
+    <link name="base_footprint">
+        <visual>
+            <geometry>
+                <cylinder length="0.001" radius="0.01"/>
+            </geometry>
+        </visual>
+    </link>
+
+    <!-- Floating-base Joint -->
+    <!-- <joint name="floating_base" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <parent link="base_footprint"/>
+        <child link="heaxpod_body_link"/>
+    </joint> -->
+
+
+    <!-- <xacro:generate_body/> -->
+
+    <xacro:generate_body/>
+
+    <xacro:generate_cox side="left"/>
+
+    <xacro:generate_femur side="left"/>
 
 
 </robot>
