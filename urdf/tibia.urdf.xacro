@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- <xacro:property name="DOCK_MASS" value="0.01"/> -->
+
+    <!-- <xacro:property name="FEM_WJ_X" value="-0.070807"/>
+    <xacro:property name="FEM_WJ_Y" value="0.02"/>
+    <xacro:property name="FEM_WJ_Z" value="0.064307"/> -->
+
+    <!-- FROM ORIGIN -->
+    <!-- <xacro:macro name="FEM_MOTOR_WHEEL_JOINT_ORIGIN">
+        <origin xyz="${FEM_WJ_X} ${FEM_WJ_Y} ${FEM_WJ_Z}" rpy="${PI_2} ${PI} 0" />
+    </xacro:macro> -->
+
+
+    <xacro:property name="FEM_WJ_FEM_OFFSET_X" value="0.032"/>
+    <xacro:property name="FEM_WJ_FEM_OFFSET_Y" value="0.004"/>
+    <xacro:property name="FEM_WJ_FEM_OFFSET_Z" value="0.0"/>
+
+    <!-- FROM TROCOX JOINT -->
+    <xacro:macro name="FEM_MOTOR_WHEEL_JOINT_ORIGIN_FEM_OFFSET">
+        <origin xyz="${FEM_WJ_FEM_OFFSET_X} ${FEM_WJ_FEM_OFFSET_Y} ${FEM_WJ_FEM_OFFSET_Z} " rpy="0 0 0" />
+    </xacro:macro>
+
+    <!-- <xacro:property name="TIB_FEM_OFFSET_X" value="0.0"/>
+    <xacro:property name="TIB_FEM_OFFSET_Y" value="-0.017845"/>
+    <xacro:property name="TIB_FEM_OFFSET_Z" value="-0.020626"/> -->
+<!-- 001743 -->
+    <xacro:property name="TIB_FEM_OFFSET_X" value="0.0"/>
+    <xacro:property name="TIB_FEM_OFFSET_Y" value="-0.019924"/>
+    <xacro:property name="TIB_FEM_OFFSET_Z" value="-0.01826"/>
+
+    <!-- FROM TROCOX JOINT -->
+    <xacro:macro name="TIBIA_JOINT_ORIGIN_FEM_OFFSET">
+        <origin xyz="${TIB_FEM_OFFSET_X} ${TIB_FEM_OFFSET_Y} ${TIB_FEM_OFFSET_Z}" rpy="0 0 -${PI}" />
+    </xacro:macro>
+
+<!-- ########################## HEXAPOD LEG GENERATOR ############################ -->
+    <xacro:macro name="generate_tibia" params="side">
+
+<!-- ########################## FEM WHEEL ############################ -->
+        <link name="tib_motor_wheel_link">
+            <xacro:FEM_MOTOR_WHEEL_JOINT_ORIGIN_FEM_OFFSET/>
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="ax12_wheel_faceOrigin"/>
+            </collision>
+
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="ax12_wheel_faceOrigin"/>
+            </visual>
+
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+
+        <joint name="tib_motor_wheel_joint" type="revolute" >
+            <!-- <xacro:FEM_MOTOR_WHEEL_JOINT_ORIGIN/> -->
+            <xacro:FEM_MOTOR_WHEEL_JOINT_ORIGIN_FEM_OFFSET/>
+            <parent link="femur_link"/>
+            <child link="tib_motor_wheel_link"/>
+            <axis xyz="0 1 0" rpy="0 0 0"/>
+            <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+            <limit upper="1.0" lower="-1.0" effort="1000.0" velocity="0.5"/>
+            <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+        </joint>
+
+         <gazebo reference="tib_motor_wheel_link">
+             <mu1 value="${HEX_MU1}"/>
+             <mu2 value="${HEX_MU2}"/>
+             <kp value="${HEX_KP}"/>
+             <kd value="${HEX_KD}"/>
+              <material>Gazebo/Blue</material>
+        </gazebo>
+
+<!-- ########################## TIBIA ############################ -->
+        <link name="tibia_link">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="tib3piece_centered"/>
+            </collision>
+
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="tib3piece_centered"/>
+            </visual>
+
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+
+        <joint name="tibia_joint" type="fixed" >
+            <xacro:TIBIA_JOINT_ORIGIN_FEM_OFFSET/>
+            <parent link="tib_motor_wheel_link"/>
+            <child link="tibia_link"/>
+        </joint>
+
+         <gazebo reference="tibia_link">
+             <mu1 value="${HEX_MU1}"/>
+             <mu2 value="${HEX_MU2}"/>
+             <kp value="${HEX_KP}"/>
+             <kd value="${HEX_KD}"/>
+              <material>Gazebo/Blue</material>
+        </gazebo>
+
+
+
+        <!-- <transmission name="${side}_dock_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="dock_${side}_joint"> -->
+
+                <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+
+                <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${side}_dock_actuator">
+                <mechanicalReduction>7</mechanicalReduction>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission> -->
+
+    </xacro:macro>
+<!-- ########################## END DOCK GENERATOR ############################ -->
+
+</robot>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
 
-    <arg name="gui" default="true"/>
+    <arg name="gui" default="false"/>
   <include file="$(find hexapod)/launch/world.launch">
       <arg name="gui" value="$(arg gui)" />
   </include>
@@ -22,7 +22,7 @@
     <node name="hexapod_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" clear_params="true" output="screen" args="-urdf  -model hexapod -param robot_description"/>
 
     <arg name="rvizconfig" default="$(find hexapod)/config/hexapod.rviz" />
-    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" /> -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
 
     <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher">
         <param name="publish_frequency" type="double" value="30.0" />

@@ -4,6 +4,7 @@
     <xacro:include filename="$(find hexapod)/urdf/body.urdf.xacro"/>
     <xacro:include filename="$(find hexapod)/urdf/cox.urdf.xacro"/>
     <xacro:include filename="$(find hexapod)/urdf/femur.urdf.xacro"/>
+    <xacro:include filename="$(find hexapod)/urdf/tibia.urdf.xacro"/>
     <!-- <xacro:include filename="$(find hexapod)/urdf/hexapod.gazebo" /> -->
 
     <!-- Footprint link -->
@@ -30,6 +31,8 @@
     <xacro:generate_cox side="left"/>
 
     <xacro:generate_femur side="left"/>
+
+    <xacro:generate_tibia side="left"/>
 
 
 </robot>
