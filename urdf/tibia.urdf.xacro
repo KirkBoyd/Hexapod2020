@@ -35,7 +35,7 @@
         <origin xyz="${TIB_FEM_OFFSET_X} ${TIB_FEM_OFFSET_Y} ${TIB_FEM_OFFSET_Z}" rpy="0 0 -${PI}" />
     </xacro:macro>
 
-<!-- ########################## HEXAPOD LEG GENERATOR ############################ -->
+<!-- ########################## HEXAPOD TIBIA GENERATOR ############################ -->
     <xacro:macro name="generate_tibia" params="side">
 
 <!-- ########################## FEM WHEEL ############################ -->

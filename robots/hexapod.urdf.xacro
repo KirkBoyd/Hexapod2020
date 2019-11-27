@@ -2,9 +2,8 @@
 <robot name="hexapod" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:include filename="$(find hexapod)/urdf/general.urdf.xacro"/>
     <xacro:include filename="$(find hexapod)/urdf/body.urdf.xacro"/>
-    <xacro:include filename="$(find hexapod)/urdf/cox.urdf.xacro"/>
-    <xacro:include filename="$(find hexapod)/urdf/femur.urdf.xacro"/>
-    <xacro:include filename="$(find hexapod)/urdf/tibia.urdf.xacro"/>
+    <xacro:include filename="$(find hexapod)/urdf/leg.urdf.xacro"/>
+
     <!-- <xacro:include filename="$(find hexapod)/urdf/hexapod.gazebo" /> -->
 
     <!-- Footprint link -->
@@ -28,11 +27,8 @@
 
     <xacro:generate_body/>
 
-    <xacro:generate_cox side="left"/>
+    <xacro:generate_leg side="left"/>
 
-    <xacro:generate_femur side="left"/>
-
-    <xacro:generate_tibia side="left"/>
 
 
 </robot>

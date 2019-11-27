@@ -39,6 +39,17 @@
   <!-- ########################## END HEX GENERATOR ############################ -->
   <!-- <xacro:property name="DOCK_MASS" value="0.01"/> -->
   <!-- ########################## END DOCK GENERATOR ############################ -->
+  <!-- <xacro:property name="DOCK_MASS" value="0.01"/> -->
+  <!-- ########################## END DOCK GENERATOR ############################ -->
+  <!-- <xacro:property name="DOCK_MASS" value="0.01"/> -->
+  <!-- <xacro:property name="FEM_WJ_X" value="-0.070807"/>
+    <xacro:property name="FEM_WJ_Y" value="0.02"/>
+    <xacro:property name="FEM_WJ_Z" value="0.064307"/> -->
+  <!-- FROM ORIGIN -->
+  <!-- <xacro:macro name="FEM_MOTOR_WHEEL_JOINT_ORIGIN">
+        <origin xyz="${FEM_WJ_X} ${FEM_WJ_Y} ${FEM_WJ_Z}" rpy="${PI_2} ${PI} 0" />
+    </xacro:macro> -->
+  <!-- ########################## END DOCK GENERATOR ############################ -->
   <!-- <xacro:include filename="$(find hexapod)/urdf/hexapod.gazebo" /> -->
   <!-- Footprint link -->
   <link name="base_footprint">
@@ -91,12 +102,12 @@
   <link name="cox_motor_wheel_link">
     <collision>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/ax12_wheel.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/ax12_wheel_faceOrigin.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
     <visual>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/ax12_wheel.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/ax12_wheel_faceOrigin.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <inertial>
@@ -109,12 +120,12 @@
     </inertial>
   </link>
   <joint name="cox_motor_wheel_joint" type="revolute">
-    <origin rpy="1.57 0 0" xyz="-0.0635 0.0 0.005"/>
+    <origin rpy="1.57079632679 3.14 0" xyz="-0.0635 0.0 0.003"/>
     <parent link="body_link"/>
     <child link="cox_motor_wheel_link"/>
-    <axis rpy="0 0 0" xyz="0 0 1"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
     <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
-    <!-- <limit upper="1.0}" lower="-1.0" effort="1000.0" velocity="0.5"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
     <!-- <joint_properties damping="1.0" friction="1.0"/> -->
   </joint>
   <gazebo reference="cox_motor_wheel_link">
@@ -123,6 +134,208 @@
     <kp value="10000.0"/>
     <kd value="10000.0"/>
     <material>Gazebo/Green</material>
+  </gazebo>
+  <!-- ########################## TROCOX ############################ -->
+  <link name="trocox_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/trochanter_contactOrigin.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/trochanter_contactOrigin.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="trocox_joint" type="fixed">
+    <!-- <origin xyz="${TROCOX_X} ${TROCOX_Y} ${TROCOX_Z}" rpy="0 0 0" /> -->
+    <origin rpy="3.14 0 0" xyz="0 0 0"/>
+    <parent link="cox_motor_wheel_link"/>
+    <child link="trocox_link"/>
+    <!-- <axis xyz="0 0 1" rpy="0 0 0"/> -->
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <!-- <limit upper="1.0" lower="-1.0" effort="1000.0" velocity="0.5"/> -->
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="trocox_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Red</material>
+  </gazebo>
+  <!-- <transmission name="${side}_dock_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="dock_${side}_joint"> -->
+  <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+  <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${side}_dock_actuator">
+                <mechanicalReduction>7</mechanicalReduction>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission> -->
+  <!-- ########################## FEM WHEEL ############################ -->
+  <link name="fem_motor_wheel_link">
+    <origin rpy="-1.57079632679 0 -1.57079632679" xyz="0.007307 0.061307 -0.02 "/>
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/ax12_wheel_faceOrigin.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/ax12_wheel_faceOrigin.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="fem_motor_wheel_joint" type="revolute">
+    <origin rpy="-1.57079632679 0 -1.57079632679" xyz="0.007307 0.061307 -0.02 "/>
+    <parent link="trocox_link"/>
+    <child link="fem_motor_wheel_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="fem_motor_wheel_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <!-- ########################## FEMUR ############################ -->
+  <link name="femur_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/femur_pPls.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/femur_pPls.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="femur_joint" type="fixed">
+    <origin rpy="0 -1.57079632679 0" xyz="0 -0.004 0"/>
+    <parent link="fem_motor_wheel_link"/>
+    <child link="femur_link"/>
+  </joint>
+  <gazebo reference="fem_motor_wheel_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <!-- <transmission name="${side}_dock_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="dock_${side}_joint"> -->
+  <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+  <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${side}_dock_actuator">
+                <mechanicalReduction>7</mechanicalReduction>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission> -->
+  <!-- ########################## FEM WHEEL ############################ -->
+  <link name="tib_motor_wheel_link">
+    <origin rpy="0 0 0" xyz="0.032 0.004 0.0 "/>
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/ax12_wheel_faceOrigin.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/ax12_wheel_faceOrigin.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="tib_motor_wheel_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.032 0.004 0.0 "/>
+    <parent link="femur_link"/>
+    <child link="tib_motor_wheel_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="tib_motor_wheel_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <!-- ########################## TIBIA ############################ -->
+  <link name="tibia_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tib3piece_centered.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tib3piece_centered.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="tibia_joint" type="fixed">
+    <origin rpy="0 0 -3.14" xyz="0.0 -0.019924 -0.01826"/>
+    <parent link="tib_motor_wheel_link"/>
+    <child link="tibia_link"/>
+  </joint>
+  <gazebo reference="tibia_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Blue</material>
   </gazebo>
   <!-- <transmission name="${side}_dock_transmission">
             <type>transmission_interface/SimpleTransmission</type>
