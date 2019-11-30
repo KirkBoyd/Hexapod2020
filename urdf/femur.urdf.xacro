@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<!-- ########################## HEXAPOD FEMUR GENERATOR ############################ -->
+    <xacro:macro name="generate_femur" params="side position joint_type:=FEM">
+
+        <xacro:generate_IdOr_link_same_mesh link_name="${side}_${position}_FEM_link" stl="femur_no_wheel_${position}_fo"/>
+        
+        <xacro:property name="coords" value="${origins[side][position][joint_type]}"/>
+        <joint name="${side}_${position}_FEM_joint" type="revolute" >
+            <origin xyz="${coords['x']} ${coords['y']} ${coords['z']}" rpy="0 0 0"/>
+            <parent link="${side}_${position}_COX_link"/>
+            <child link="${side}_${position}_FEM_link"/>
+            <axis xyz="0 1 0" rpy="0 0 0"/>
+            <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+            <limit upper="1.0" lower="-1.0" effort="1000.0" velocity="0.5"/>
+            <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+        </joint>
+
+         <gazebo reference="${side}_${position}_FEM_link">
+             <mu1 value="${HEX_MU1}"/>
+             <mu2 value="${HEX_MU2}"/>
+             <kp value="${HEX_KP}"/>
+             <kd value="${HEX_KD}"/>
+              <material>Gazebo/Blue</material>
+        </gazebo>
+
+        <!-- <transmission name="${side}_dock_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="dock_${side}_joint"> -->
+
+                <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+
+                <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${side}_dock_actuator">
+                <mechanicalReduction>7</mechanicalReduction>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission> -->
+
+    </xacro:macro>
+<!-- ########################## END DOCK GENERATOR ############################ -->
+
+</robot>

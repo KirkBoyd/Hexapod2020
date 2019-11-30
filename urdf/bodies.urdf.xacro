@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="HEX_MASS" value="0.1"/>
+
+    <xacro:property name="HEX_LENGTH" value="0.4"/>
+    <xacro:property name="HEX_WIDTH" value="0.05"/>
+    <xacro:property name="HEX_HEIGHT" value="0.3"/>
+
+    <xacro:property name="HEX_X_OFFSET" value="0.5"/>
+    <xacro:property name="HEX_Y_OFFSET" value="0.15"/>
+
+
+    <xacro:macro name="HEX_UPPER_BODY_JOINT_ORIGIN">
+        <origin xyz="0 0 0.035" rpy="0 0 0" />
+    </xacro:macro>
+
+<!-- ########################## HEX GENERATOR ############################ -->
+    <xacro:macro name="generate_bodies" >
+
+<!-- ########################## BODY LINK ############################ -->
+    <!-- Body link -->
+    <link name="body"/>
+
+
+<!-- ########################## LOWER BODY LINK ############################ -->
+        <link name="heaxpod_lower_body_link">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="base_lower"/>
+            </collision>
+
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="base_lower"/>
+            </visual>
+
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+
+        <joint type="fixed" name="heaxpod_lower_body_joint">
+            <parent link="base_link"/>
+            <child link="heaxpod_lower_body_link"/>
+        </joint>
+
+         <gazebo reference="heaxpod_lower_body_link">
+              <mu1 value="${HEX_MU1}"/>
+              <mu2 value="${HEX_MU2}"/>
+              <kp value="${HEX_KP}"/>
+              <kd value="${HEX_KD}"/>
+              <material>Gazebo/Red</material>
+        </gazebo>
+
+<!-- ########################## UPPER BODY LINK ############################ -->
+
+        <link name="heaxpod_upper_body_link">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="base_upper"/>
+            </collision>
+
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="base_upper"/>
+            </visual>
+
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+
+        <joint type="fixed" name="heaxpod_upper_body_joint">
+            <xacro:HEX_UPPER_BODY_JOINT_ORIGIN/>
+            <parent link="heaxpod_lower_body_link"/>
+            <child link="heaxpod_upper_body_link"/>
+        </joint>
+
+         <gazebo reference="heaxpod_upper_body_link">
+              <mu1 value="${HEX_MU1}"/>
+              <mu2 value="${HEX_MU2}"/>
+              <kp value="${HEX_KP}"/>
+              <kd value="${HEX_KD}"/>
+              <material>Gazebo/Green</material>
+        </gazebo>
+
+    </xacro:macro>
+<!-- ########################## END HEX GENERATOR ############################ -->
+
+</robot>

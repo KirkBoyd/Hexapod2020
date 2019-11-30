@@ -1,0 +1,139 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="HEX_IXX" value="0.00531683333333"/>
+    <xacro:property name="HEX_IYY" value="0.00531683333333"/>
+    <xacro:property name="HEX_IZZ" value="0.010143"/>
+<!--Physical properties of material-->
+    <xacro:property name="HEX_MU1" value="10.0"/>  <!-- Frictions -->
+    <xacro:property name="HEX_MU2" value="10.0"/>
+    <xacro:property name="HEX_KP" value="10000.0"/> <!-- Static contact stiffness. This determines if the link material is closer to marble (very rigid, bigger values) or more like rubber (soft material, lower values). -->
+    <xacro:property name="HEX_KD" value="10000.0"/> <!-- Dynamic contact stiffness. This determines if the link material is closer to marble (very rigid, bigger values) or more like rubber (soft material, lower values). It's essentially how much it deforms over a long period of time, exerting its pressure. -->
+
+    <xacro:property name="SCALE" value="0.001"/>
+
+<!-- ################################################################## -->
+<!-- ############################ MATH ################################ -->
+<!-- ################################################################## -->
+    <!-- <xacro:property name="PI" value="3.1415926535897931"/> -->
+    <xacro:property name="PI" value="3.14"/>
+    <xacro:property name="PI_2" value=" 1.57079632679"/>
+
+
+<!-- ################################################################## -->
+<!-- ########################## GENERATORS ############################ -->
+<!-- ################################################################## -->
+
+<!--########################## GEOMETRY XACRO ##########################-->
+    <xacro:macro name="generate_geometry" params="shape radius=0 length=0 x=0 y=0 z=0">
+    <!--UNITS IN METERS-->
+    <!--<cylinder radius="" length=""/>-->
+    <!--<box x="" y="" z="" />-->
+    <!--<sphere radius=""/> -->
+        <geometry>
+
+            <xacro:if value="${shape == 'box'}">
+                <box size="${x} ${y} ${z}"/>
+            </xacro:if>
+            <xacro:if value="${shape == 'cylinder'}">
+                <cylinder length="${length}" radius="${radius}"/>
+            </xacro:if>
+            <xacro:if value="${shape == 'sphere'}">
+                <sphere radius="${radius}"/>
+            </xacro:if>
+
+        </geometry>
+    </xacro:macro>
+
+<!--########################## GENERATE IDENTITY ORIGIN LINK WITH IDENTICAL COLLISION/VISUAL MESH XACRO ##########################-->
+    <xacro:macro name="generate_IdOr_link_same_mesh" params="link_name stl">
+        <link name="${link_name}">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </collision>
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </visual>
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+    </xacro:macro>
+
+    <!--########################## GENERATE IDENTITY ORIGIN LINK WITH IDENTICAL COLLISION/VISUAL MESH XACRO ##########################-->
+    <!-- <xacro:macro name="generate_joint" params="joint_name parent child ">
+        <link name="${link_name}">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </collision>
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </visual>
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+    </xacro:macro> -->
+
+<!--########################## STL XACRO ##########################-->
+    <xacro:macro name="add_stl" params="scale fname">
+        <geometry>
+            <mesh filename="package://hexapod/urdf/models/${fname}.stl" scale="${scale} ${scale} ${scale}"/>
+        </geometry>
+    </xacro:macro>
+
+<!--######################## MINIMUM INERTIA XACRO ########################-->
+    <xacro:macro name="MINIMUM_INERTIAL">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="0.1"/>
+            <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+             <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+        </inertial>
+    </xacro:macro>
+
+    <xacro:macro name="ONE_INERTIAL">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="10.0"/>
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+        </inertial>
+    </xacro:macro>
+
+    <!--######################## ZERO ORIGIN XACRO ########################-->
+    <xacro:macro name="ZERO_ORIGIN">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:macro>
+
+    <!--######################## SCALE XACRO ########################-->
+    <xacro:macro name="generate_scale" params="val">
+        scale="val val val"
+    </xacro:macro>
+
+<!--######################## GAZEBO REFERENCE XACRO ########################-->
+    <xacro:macro name="generate_gazebo_reference" params="link_name color=White">
+        <!-- <material>color</material> only works for rviz URDF, not Gazebo -->
+        <!-- If 'color' param is unspecified, it defaults to White -->
+        <gazebo reference="${link_name}">
+            <!-- <kp>1000.0</kp>
+            <kd>1000.0</kd>
+            <mu1>10.0</mu1>
+            <mu2>10.0</mu2> -->
+                <material>Gazebo/${color}</material>
+        </gazebo>
+    </xacro:macro>
+
+
+<!-- ################################################################## -->
+<!-- ############################ COLORS ############################## -->
+<!-- ################################################################## -->
+<!-- These are for URDF coloring. Gazebo colors begin with capital letters -->
+    <material name="blue"><color rgba="0.0 0.0 0.8 1.0"/></material>
+    <material name="green"><color rgba="0.0 0.8 0.0 1.0"/></material>
+    <material name="grey"><color rgba="0.7 0.7 0.7 1.0"/></material>
+    <material name="lightGrey"><color rgba="0.9 0.9 0.9 1.0"/></material>
+    <material name="darkGrey"><color rgba="0.2 0.2 0.2 1.0"/> </material>
+    <material name="red"><color rgba="0.8 0.0 0.0 1.0"/></material>
+    <material name="white"><color rgba="1.0 1.0 1.0 1.0"/></material>
+    <material name="orange"><color rgba="1.0 0.69 0.0 1.0"/></material>
+
+
+</robot>

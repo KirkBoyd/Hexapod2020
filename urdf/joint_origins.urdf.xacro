@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:macro name="L_F_COX_ORIG"><origin xyz="0.057077	-0.066312	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_F_FEM_ORIG"><origin xyz="0.055388	-0.08376	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_F_TIB_ORIG"><origin xyz="0.0831	-0.09976	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="L_M_COX_ORIG"><origin xyz="0.0635	0	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_M_FEM_ORIG"><origin xyz="0.070761	-0.015954	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_M_TIB_ORIG"><origin xyz="0.102761	-0.015955	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="L_B_COX_ORIG"><origin xyz="0.057077	0.066312	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_B_FEM_ORIG"><origin xyz="0.071342	0.056126	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_B_TIB_ORIG"><origin xyz="0.099055	0.072126	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="R_F_COX_ORIG"><origin xyz="-0.057077	-0.066312	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_F_FEM_ORIG"><origin xyz="-0.055388	-0.08376	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_F_TIB_ORIG"><origin xyz="-0.0831	-0.09976	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="R_M_COX_ORIG"><origin xyz="-0.0635	0	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_M_FEM_ORIG"><origin xyz="-0.070761	-0.015954	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_M_TIB_ORIG"><origin xyz="-0.102761	-0.015955	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="R_B_COX_ORIG"><origin xyz="-0.057077	0.066312	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_B_FEM_ORIG"><origin xyz="-0.071342	0.056126	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_B_TIB_ORIG"><origin xyz="-0.099055	0.072126	0.06428" rpy="0 0 0"/></xacro:macro>
+
+<xacro:property name="package" value="$(find hexapod)"/>
+
+<xacro:property name="origins" value="${load_yaml(package + '/config/joint_origins.yaml')}"/>
+
+<!-- <xacro:macro name="get_origin" params="side position joint_type"> -->
+    <!-- <xacro:property name="coords" value="${origins['${side}_${position}_${joint_type}']}"/> -->
+
+<!-- </xacro:macro> -->
+
+
+<!-- <xacro:property name="mapping" value="${None}"/> -->
+<!-- <xacro:property name="mapping" value="${mapping.get('handedness','right')}"/> -->
+<!-- <xacro:property name="proximal_len" value="${properties['link_lengths'][finger]['proximal']}"/> -->
+</robot>

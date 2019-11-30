@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="HEX_MASS" value="0.1"/>
+
+    <xacro:property name="HEX_LENGTH" value="0.4"/>
+    <xacro:property name="HEX_WIDTH" value="0.05"/>
+    <xacro:property name="HEX_HEIGHT" value="0.3"/>
+
+    <xacro:property name="HEX_X_OFFSET" value="0.5"/>
+    <xacro:property name="HEX_Y_OFFSET" value="0.15"/>
+
+
+    <xacro:macro name="HEX_UPPER_BODY_JOINT_ORIGIN">
+        <origin xyz="0 0 0.035" rpy="0 0 0" />
+    </xacro:macro>
+
+<!-- ########################## HEX GENERATOR ############################ -->
+    <xacro:macro name="generate_body" >
+
+<!-- ########################## BODY LINK ############################ -->
+    <!-- Body link -->
+        <link name="body_link">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="base"/>
+            </collision>
+
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="base"/>
+            </visual>
+
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+
+        <joint type="fixed" name="body_joint">
+            <parent link="base_footprint"/>
+            <child link="body_link"/>
+        </joint>
+
+         <gazebo reference="body_link">
+              <mu1 value="${HEX_MU1}"/>
+              <mu2 value="${HEX_MU2}"/>
+              <kp value="${HEX_KP}"/>
+              <kd value="${HEX_KD}"/>
+              <material>Gazebo/Red</material>
+        </gazebo>
+
+
+    </xacro:macro>
+<!-- ########################## END HEX GENERATOR ############################ -->
+
+</robot>

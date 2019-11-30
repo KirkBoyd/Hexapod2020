@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="gui" default="false"/>
+  <include file="$(find hexapod)/launch/world.launch">
+      <arg name="gui" value="$(arg gui)" />
+  </include>
+
+      <arg name="x" default="0.0"/>
+      <arg name="y" default="0.0"/>
+      <arg name="z" default="0.0"/>
+      <arg name="YAW" default="-1.57"/>
+
+    <!-- Load the URDF into the ROS Parameter Server -->
+    <!-- Converts XACRO to URDF at launch time and passes it -->
+    <!-- Manual conversion     rosrun xacro xacro model.xacro > model.urdf    -->
+    <param name="robot_description" command="$(find xacro)/xacro '$(find hexapod)/robots/hexapod.urdf.xacro'" />
+
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <!-- <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+    args="-urdf -x $(arg x) -y $(arg y) -z $(arg z)  -model $(arg robot_name) -param robot_description"/> -->
+    <node name="hexapod_urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" clear_params="true" output="screen" args="-urdf  -model hexapod -param robot_description"/>
+
+    <arg name="rvizconfig" default="$(find hexapod)/config/hexapod.rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
+
+    <node pkg="robot_state_publisher" type="robot_state_publisher"  name="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="30.0" />
+    </node>
+
+    <node pkg="joint_state_publisher" type="joint_state_publisher"  name="joint_state_publisher">
+        <param name="publish_frequency" type="double" value="30.0" />
+        <param name="use_gui" value="true"/>
+    </node>
+
+    <!-- <node name="rqt_tf_tree" pkg="rqt_tf_tree" type="rqt_tf_tree" args="" /> -->
+
+</launch>
