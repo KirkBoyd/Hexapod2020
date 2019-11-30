@@ -1,91 +1,29 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <!-- <xacro:property name="DOCK_MASS" value="0.01"/> -->
-
-    <xacro:property name="COX_WJ_X" value="-0.0635"/> <!-- 063501 -->
-    <xacro:property name="COX_WJ_Y" value="0.0"/>
-    <xacro:property name="COX_WJ_Z" value="0.003"/>
-
-    <xacro:property name="TROCOX_X" value="-0.063406"/>
-    <xacro:property name="TROCOX_Y" value="-0.069967"/>
-    <xacro:property name="TROCOX_Z" value="0.023007"/>
-
-
-    <xacro:macro name="COX_MOTOR_WHEEL_JOINT_ORIGIN">
-        <origin xyz="${COX_WJ_X} ${COX_WJ_Y} ${COX_WJ_Z}" rpy="${PI_2} ${PI} 0" />
-    </xacro:macro>
-
-    <xacro:macro name="TROCOX_JOINT_ORIGIN">
-        <!-- <origin xyz="${TROCOX_X} ${TROCOX_Y} ${TROCOX_Z}" rpy="0 0 0" /> -->
-        <origin xyz="0 0 0" rpy="${PI} 0 0" />
-    </xacro:macro>
-
-
-<!-- ########################## HEXAPOD LEG GENERATOR ############################ -->
-    <xacro:macro name="generate_cox" params="side">
-
-        <link name="cox_motor_wheel_link">
-            <collision>
-                <xacro:add_stl scale="${SCALE}" fname="ax12_wheel_faceOrigin"/>
-            </collision>
-
-            <visual>
-                <xacro:add_stl scale="${SCALE}" fname="ax12_wheel_faceOrigin"/>
-            </visual>
-
-            <xacro:MINIMUM_INERTIAL/>
-        </link>
-
-        <joint name="cox_motor_wheel_joint" type="revolute" >
-            <xacro:COX_MOTOR_WHEEL_JOINT_ORIGIN/>
+<!-- ########################## HEXAPOD TROCOX GENERATOR ############################ -->
+    <xacro:macro name="generate_cox" params="side position joint_type:=COX">
+        
+        <xacro:generate_IdOr_link_same_mesh link_name="${side}_${position}_COX_link" stl="coxa_2_wheels_${position}_fo"/>
+        
+        <xacro:property name="coords" value="${origins[side][position][joint_type]}"/>
+        <joint name="${side}_${position}_COX_joint" type="revolute" >
+            <origin xyz="${coords['x']} ${coords['y']} ${coords['z']}" rpy="0 0 0"/>
             <parent link="body_link"/>
-            <child link="cox_motor_wheel_link"/>
-            <axis xyz="0 1 0" rpy="0 0 0"/>
+            <child link="${side}_${position}_COX_link"/>
+            <axis xyz="0 0 1" rpy="0 0 0"/>
             <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
             <limit upper="1.0" lower="-1.0" effort="1000.0" velocity="0.5"/>
             <!-- <joint_properties damping="1.0" friction="1.0"/> -->
         </joint>
 
-         <gazebo reference="cox_motor_wheel_link">
+         <gazebo reference="${side}_${position}_COX_link">
              <mu1 value="${HEX_MU1}"/>
              <mu2 value="${HEX_MU2}"/>
              <kp value="${HEX_KP}"/>
              <kd value="${HEX_KD}"/>
               <material>Gazebo/Green</material>
         </gazebo>
-
-<!-- ########################## TROCOX ############################ -->
-        <link name="trocox_link">
-            <collision>
-                <xacro:add_stl scale="${SCALE}" fname="trochanter_contactOrigin"/>
-            </collision>
-
-            <visual>
-                <xacro:add_stl scale="${SCALE}" fname="trochanter_contactOrigin"/>
-            </visual>
-
-            <xacro:MINIMUM_INERTIAL/>
-        </link>
-
-        <joint name="trocox_joint" type="fixed" >
-            <xacro:TROCOX_JOINT_ORIGIN/>
-            <parent link="cox_motor_wheel_link"/>
-            <child link="trocox_link"/>
-            <!-- <axis xyz="0 0 1" rpy="0 0 0"/> -->
-            <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
-            <!-- <limit upper="1.0" lower="-1.0" effort="1000.0" velocity="0.5"/> -->
-            <!-- <joint_properties damping="1.0" friction="1.0"/> -->
-        </joint>
-
-         <gazebo reference="trocox_link">
-             <mu1 value="${HEX_MU1}"/>
-             <mu2 value="${HEX_MU2}"/>
-             <kp value="${HEX_KP}"/>
-             <kd value="${HEX_KD}"/>
-              <material>Gazebo/Red</material>
-        </gazebo>
-
 
         <!-- <transmission name="${side}_dock_transmission">
             <type>transmission_interface/SimpleTransmission</type>

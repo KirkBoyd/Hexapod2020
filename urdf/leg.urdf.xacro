@@ -1,20 +1,21 @@
 <?xml version="1.0"?>
-<robot name="hexapod" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
     <!-- <xacro:include filename="$(find hexapod)/urdf/general.urdf.xacro"/> -->
 
+    <xacro:include filename="$(find hexapod)/urdf/joint_origins.urdf.xacro"/>
     <xacro:include filename="$(find hexapod)/urdf/cox.urdf.xacro"/>
     <xacro:include filename="$(find hexapod)/urdf/femur.urdf.xacro"/>
     <xacro:include filename="$(find hexapod)/urdf/tibia.urdf.xacro"/>
 
 
 <!-- ########################## HEXAPOD LEG GENERATOR ############################ -->
-    <xacro:macro name="generate_leg" params="side">
+    <xacro:macro name="generate_leg" params="side position">
 
-        <xacro:generate_cox side="left"/>
+        <xacro:generate_cox side="${side}" position="${position}"/>
 
-        <xacro:generate_femur side="left"/>
+        <xacro:generate_femur side="${side}" position="${position}"/>
 
-        <xacro:generate_tibia side="left"/>
+        <!-- <xacro:generate_tibia side="left"/> -->
 
     </xacro:macro>
 <!-- ########################## END HEXAPOD LEG GENERATOR ############################ -->

@@ -22,11 +22,11 @@
     <!-- Body link -->
         <link name="body_link">
             <collision>
-                <xacro:add_stl scale="${SCALE}" fname="baseWithCox"/>
+                <xacro:add_stl scale="${SCALE}" fname="base"/>
             </collision>
 
             <visual>
-                <xacro:add_stl scale="${SCALE}" fname="baseWithCox"/>
+                <xacro:add_stl scale="${SCALE}" fname="base"/>
             </visual>
 
             <xacro:MINIMUM_INERTIAL/>

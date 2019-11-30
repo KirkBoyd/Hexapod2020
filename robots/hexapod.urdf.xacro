@@ -27,7 +27,10 @@
 
     <xacro:generate_body/>
 
-    <xacro:generate_leg side="left"/>
+    <xacro:generate_leg side="R" position="M"/>
+    <xacro:generate_leg side="R" position="F"/>
+    <xacro:generate_leg side="R" position="B"/>
+
 
 
 

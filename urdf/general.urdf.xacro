@@ -45,6 +45,32 @@
         </geometry>
     </xacro:macro>
 
+<!--########################## GENERATE IDENTITY ORIGIN LINK WITH IDENTICAL COLLISION/VISUAL MESH XACRO ##########################-->
+    <xacro:macro name="generate_IdOr_link_same_mesh" params="link_name stl">
+        <link name="${link_name}">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </collision>
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </visual>
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+    </xacro:macro>
+
+    <!--########################## GENERATE IDENTITY ORIGIN LINK WITH IDENTICAL COLLISION/VISUAL MESH XACRO ##########################-->
+    <!-- <xacro:macro name="generate_joint" params="joint_name parent child ">
+        <link name="${link_name}">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </collision>
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </visual>
+            <xacro:MINIMUM_INERTIAL/>
+        </link>
+    </xacro:macro> -->
+
 <!--########################## STL XACRO ##########################-->
     <xacro:macro name="add_stl" params="scale fname">
         <geometry>
