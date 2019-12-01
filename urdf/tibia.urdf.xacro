@@ -10,7 +10,7 @@
         <joint name="${side}_${position}_TIB_joint" type="revolute" >
             <origin xyz="${coords['x']} ${coords['y']} ${coords['z']}" rpy="0 0 0"/>
             <parent link="${side}_${position}_FEM_link"/>
-            <!-- NO CHILD LINK <child link="${side}_${position}_COX_link"/> -->
+            <child link="${side}_${position}_TIB_link"/>
             <axis xyz="0 1 0" rpy="0 0 0"/>
             <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
             <limit upper="1.0" lower="-1.0" effort="1000.0" velocity="0.5"/>
