@@ -31,7 +31,9 @@
     <xacro:generate_leg side="R" position="F"/>
     <xacro:generate_leg side="R" position="B"/>
 
-
+    <!--<xacro:generate_leg side="L" position="M"/>
+    <xacro:generate_leg side="L" position="F"/>
+    <xacro:generate_leg side="L" position="B"/>--> 
 
 
 </robot>
