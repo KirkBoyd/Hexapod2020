@@ -15,7 +15,7 @@
 
         <xacro:generate_femur side="${side}" position="${position}"/>
 
-        <!-- <xacro:generate_tibia side="left"/> -->
+        <xacro:generate_tibia side="${side}" position="${position}"/>
 
     </xacro:macro>
 <!-- ########################## END HEXAPOD LEG GENERATOR ############################ -->
