@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-<!-- ########################## HEXAPOD TROCOX GENERATOR ############################ -->
+<!-- ########################## HEXAPOD COXA GENERATOR ############################ -->
     <xacro:macro name="generate_cox" params="side position joint_type:=COX">
         
-        <xacro:generate_IdOr_link_same_mesh link_name="${side}_${position}_COX_link" stl="coxa_2_wheels_${position}_fo"/>
+        <xacro:generate_IdOr_link_same_mesh link_name="${side}_${position}_COX_link" stl="coxa_${position}"/>
         
         <xacro:property name="coords" value="${origins[side][position][joint_type]}"/>
         <joint name="${side}_${position}_COX_joint" type="revolute" >
