@@ -27,8 +27,8 @@ source devel/setup.bash
 ```
 * Add and append aliases for changing directories and sourcing workspace; Reload Terminal
 ```
-echo 'alias cdx = "cd ~/hex_ws/src/hexapod/"' >> ~/.bashrc
-echo 'alias swsx = "source ~/hex_ws/devel/setup.bash"' >> ~/.bashrc
+echo "alias cdx = 'cd ~/hex_ws/src/hexapod/'" >> ~/.bashrc
+echo "alias swsx = 'source ~/hex_ws/devel/setup.bash'" >> ~/.bashrc
 # Reload Terminal
 source ~/.bashrc 
 ```
