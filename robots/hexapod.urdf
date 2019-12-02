@@ -50,22 +50,36 @@
   </material>
   <!-- ########################## END HEX GENERATOR ############################ -->
   <!-- <xacro:include filename="$(find hexapod)/urdf/general.urdf.xacro"/> -->
+  <!-- <xacro:macro name="L_F_COX_ORIG"><origin xyz="0.057077	-0.066312	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_F_FEM_ORIG"><origin xyz="0.055388	-0.08376	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_F_TIB_ORIG"><origin xyz="0.0831	-0.09976	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="L_M_COX_ORIG"><origin xyz="0.0635	0	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_M_FEM_ORIG"><origin xyz="0.070761	-0.015954	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_M_TIB_ORIG"><origin xyz="0.102761	-0.015955	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="L_B_COX_ORIG"><origin xyz="0.057077	0.066312	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_B_FEM_ORIG"><origin xyz="0.071342	0.056126	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="L_B_TIB_ORIG"><origin xyz="0.099055	0.072126	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="R_F_COX_ORIG"><origin xyz="-0.057077	-0.066312	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_F_FEM_ORIG"><origin xyz="-0.055388	-0.08376	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_F_TIB_ORIG"><origin xyz="-0.0831	-0.09976	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="R_M_COX_ORIG"><origin xyz="-0.0635	0	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_M_FEM_ORIG"><origin xyz="-0.070761	-0.015954	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_M_TIB_ORIG"><origin xyz="-0.102761	-0.015955	0.064284" rpy="0 0 0"/></xacro:macro>
+
+<xacro:macro name="R_B_COX_ORIG"><origin xyz="-0.057077	0.066312	0.007" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_B_FEM_ORIG"><origin xyz="-0.071342	0.056126	0.064284" rpy="0 0 0"/></xacro:macro>
+<xacro:macro name="R_B_TIB_ORIG"><origin xyz="-0.099055	0.072126	0.06428" rpy="0 0 0"/></xacro:macro> -->
   <!-- <xacro:macro name="get_origin" params="side position joint_type"> -->
   <!-- <xacro:property name="coords" value="${origins['${side}_${position}_${joint_type}']}"/> -->
   <!-- </xacro:macro> -->
   <!-- <xacro:property name="mapping" value="${None}"/> -->
   <!-- <xacro:property name="mapping" value="${mapping.get('handedness','right')}"/> -->
   <!-- <xacro:property name="proximal_len" value="${properties['link_lengths'][finger]['proximal']}"/> -->
-  <!-- ########################## END DOCK GENERATOR ############################ -->
-  <!-- ########################## END DOCK GENERATOR ############################ -->
-  <!-- <xacro:property name="DOCK_MASS" value="0.01"/> -->
-  <!-- <xacro:property name="FEM_WJ_X" value="-0.070807"/>
-    <xacro:property name="FEM_WJ_Y" value="0.02"/>
-    <xacro:property name="FEM_WJ_Z" value="0.064307"/> -->
-  <!-- FROM ORIGIN -->
-  <!-- <xacro:macro name="FEM_MOTOR_WHEEL_JOINT_ORIGIN">
-        <origin xyz="${FEM_WJ_X} ${FEM_WJ_Y} ${FEM_WJ_Z}" rpy="${PI_2} ${PI} 0" />
-    </xacro:macro> -->
+  <!-- ########################## END COXA GENERATOR ############################ -->
   <!-- ########################## END DOCK GENERATOR ############################ -->
   <!-- ########################## END HEXAPOD LEG GENERATOR ############################ -->
   <!-- <xacro:include filename="$(find hexapod)/urdf/hexapod.gazebo" /> -->
@@ -120,12 +134,12 @@
   <link name="R_M_COX_link">
     <collision>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/coxa_2_wheels_M_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/coxa_R_M.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
     <visual>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/coxa_2_wheels_M_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/coxa_R_M.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <inertial>
@@ -153,26 +167,15 @@
     <kd value="10000.0"/>
     <material>Gazebo/Green</material>
   </gazebo>
-  <!-- <transmission name="${side}_dock_transmission">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="dock_${side}_joint"> -->
-  <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
-  <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${side}_dock_actuator">
-                <mechanicalReduction>7</mechanicalReduction>
-                <hardwareInterface>EffortJointInterface</hardwareInterface>
-            </actuator>
-        </transmission> -->
   <link name="R_M_FEM_link">
     <collision>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/femur_no_wheel_M_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/femur_R_M.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
     <visual>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/femur_no_wheel_M_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/femur_R_M.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <inertial>
@@ -185,7 +188,7 @@
     </inertial>
   </link>
   <joint name="R_M_FEM_joint" type="revolute">
-    <origin rpy="0 0 0" xyz="-0.007261 -0.015954 0.057284"/>
+    <origin rpy="0 0 0" xyz="-0.007261 0.015954 0.057284"/>
     <parent link="R_M_COX_link"/>
     <child link="R_M_FEM_link"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
@@ -211,16 +214,51 @@
                 <hardwareInterface>EffortJointInterface</hardwareInterface>
             </actuator>
         </transmission> -->
-  <!-- <xacro:generate_tibia side="left"/> -->
-  <link name="R_F_COX_link">
+  <link name="R_M_TIB_link">
     <collision>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/coxa_2_wheels_F_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_M.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
     <visual>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/coxa_2_wheels_F_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="R_M_TIB_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="-0.032 0 0"/>
+    <parent link="R_M_FEM_link"/>
+    <child link="R_M_TIB_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="R_M_TIB_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="R_F_COX_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_R_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_R_F.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <inertial>
@@ -248,26 +286,15 @@
     <kd value="10000.0"/>
     <material>Gazebo/Green</material>
   </gazebo>
-  <!-- <transmission name="${side}_dock_transmission">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="dock_${side}_joint"> -->
-  <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
-  <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${side}_dock_actuator">
-                <mechanicalReduction>7</mechanicalReduction>
-                <hardwareInterface>EffortJointInterface</hardwareInterface>
-            </actuator>
-        </transmission> -->
   <link name="R_F_FEM_link">
     <collision>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/femur_no_wheel_F_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/femur_R_F.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
     <visual>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/femur_no_wheel_F_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/femur_R_F.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <inertial>
@@ -280,7 +307,7 @@
     </inertial>
   </link>
   <joint name="R_F_FEM_joint" type="revolute">
-    <origin rpy="0 0 0" xyz="0.001689 -0.017448 0.057284"/>
+    <origin rpy="0 0 0" xyz="-0.007261 -0.017448 0.057284"/>
     <parent link="R_F_COX_link"/>
     <child link="R_F_FEM_link"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
@@ -306,16 +333,51 @@
                 <hardwareInterface>EffortJointInterface</hardwareInterface>
             </actuator>
         </transmission> -->
-  <!-- <xacro:generate_tibia side="left"/> -->
-  <link name="R_B_COX_link">
+  <link name="R_F_TIB_link">
     <collision>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/coxa_2_wheels_B_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_F.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
     <visual>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/coxa_2_wheels_B_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="R_F_TIB_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="-0.027712 0 0"/>
+    <parent link="R_F_FEM_link"/>
+    <child link="R_F_TIB_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="R_F_TIB_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="R_B_COX_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_R_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_R_B.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <inertial>
@@ -343,26 +405,15 @@
     <kd value="10000.0"/>
     <material>Gazebo/Green</material>
   </gazebo>
-  <!-- <transmission name="${side}_dock_transmission">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="dock_${side}_joint"> -->
-  <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
-  <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${side}_dock_actuator">
-                <mechanicalReduction>7</mechanicalReduction>
-                <hardwareInterface>EffortJointInterface</hardwareInterface>
-            </actuator>
-        </transmission> -->
   <link name="R_B_FEM_link">
     <collision>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/femur_no_wheel_B_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/femur_R_B.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </collision>
     <visual>
       <geometry>
-        <mesh filename="package://hexapod/urdf/models/femur_no_wheel_B_fo.stl" scale="0.001 0.001 0.001"/>
+        <mesh filename="package://hexapod/urdf/models/femur_R_B.stl" scale="0.001 0.001 0.001"/>
       </geometry>
     </visual>
     <inertial>
@@ -375,7 +426,7 @@
     </inertial>
   </link>
   <joint name="R_B_FEM_joint" type="revolute">
-    <origin rpy="0 0 0" xyz="-0.014265 -0.010186 0.057284"/>
+    <origin rpy="0 0 0" xyz="-0.007261 0.017438 0.057284"/>
     <parent link="R_B_COX_link"/>
     <child link="R_B_FEM_link"/>
     <axis rpy="0 0 0" xyz="0 1 0"/>
@@ -401,6 +452,397 @@
                 <hardwareInterface>EffortJointInterface</hardwareInterface>
             </actuator>
         </transmission> -->
-  <!-- <xacro:generate_tibia side="left"/> -->
+  <link name="R_B_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="R_B_TIB_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="-0.027712 0 0"/>
+    <parent link="R_B_FEM_link"/>
+    <child link="R_B_TIB_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="R_B_TIB_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="L_M_COX_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_L_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_L_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_M_COX_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.0635 0 0.007"/>
+    <parent link="body_link"/>
+    <child link="L_M_COX_link"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_M_COX_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="L_M_FEM_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/femur_L_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/femur_L_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_M_FEM_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.007261 0.015954 0.057284"/>
+    <parent link="L_M_COX_link"/>
+    <child link="L_M_FEM_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_M_FEM_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <!-- <transmission name="${side}_dock_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="dock_${side}_joint"> -->
+  <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+  <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${side}_dock_actuator">
+                <mechanicalReduction>7</mechanicalReduction>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission> -->
+  <link name="L_M_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_M_TIB_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.032 0 0"/>
+    <parent link="L_M_FEM_link"/>
+    <child link="L_M_TIB_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_M_TIB_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="L_F_COX_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_L_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_L_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_F_COX_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.057077 -0.066312 0.007"/>
+    <parent link="body_link"/>
+    <child link="L_F_COX_link"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_F_COX_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="L_F_FEM_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/femur_L_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/femur_L_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_F_FEM_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.007261 -0.017448 0.057284"/>
+    <parent link="L_F_COX_link"/>
+    <child link="L_F_FEM_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_F_FEM_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <!-- <transmission name="${side}_dock_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="dock_${side}_joint"> -->
+  <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+  <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${side}_dock_actuator">
+                <mechanicalReduction>7</mechanicalReduction>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission> -->
+  <link name="L_F_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_F_TIB_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.027712 0 0"/>
+    <parent link="L_F_FEM_link"/>
+    <child link="L_F_TIB_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_F_TIB_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="L_B_COX_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_L_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/coxa_L_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_B_COX_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.057077 0.066312 0.007"/>
+    <parent link="body_link"/>
+    <child link="L_B_COX_link"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_B_COX_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
+  <link name="L_B_FEM_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/femur_L_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/femur_L_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_B_FEM_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.007261 0.017438 0.057284"/>
+    <parent link="L_B_COX_link"/>
+    <child link="L_B_FEM_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_B_FEM_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Blue</material>
+  </gazebo>
+  <!-- <transmission name="${side}_dock_transmission">
+            <type>transmission_interface/SimpleTransmission</type>
+            <joint name="dock_${side}_joint"> -->
+  <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
+  <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </joint>
+            <actuator name="${side}_dock_actuator">
+                <mechanicalReduction>7</mechanicalReduction>
+                <hardwareInterface>EffortJointInterface</hardwareInterface>
+            </actuator>
+        </transmission> -->
+  <link name="L_B_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
+      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
+                      iyy="1.66666666667e-08" iyz="0.0"
+                      izz="1.66666666667e-08"/> -->
+    </inertial>
+  </link>
+  <joint name="L_B_TIB_joint" type="revolute">
+    <origin rpy="0 0 0" xyz="0.027712 0 0"/>
+    <parent link="L_B_FEM_link"/>
+    <child link="L_B_TIB_link"/>
+    <axis rpy="0 0 0" xyz="0 1 0"/>
+    <!-- <limit upper="${PI}" lower="${PI}" effort="10000" velocity="1000"/> -->
+    <limit effort="1000.0" lower="-1.0" upper="1.0" velocity="0.5"/>
+    <!-- <joint_properties damping="1.0" friction="1.0"/> -->
+  </joint>
+  <gazebo reference="L_B_TIB_link">
+    <mu1 value="10.0"/>
+    <mu2 value="10.0"/>
+    <kp value="10000.0"/>
+    <kd value="10000.0"/>
+    <material>Gazebo/Green</material>
+  </gazebo>
 </robot>
-

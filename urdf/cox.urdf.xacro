@@ -24,22 +24,7 @@
              <kd value="${HEX_KD}"/>
               <material>Gazebo/Green</material>
         </gazebo>
-
-        <!-- <transmission name="${side}_dock_transmission">
-            <type>transmission_interface/SimpleTransmission</type>
-            <joint name="dock_${side}_joint"> -->
-
-                <!-- <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface> -->
-
-                <!-- <hardwareInterface>EffortJointInterface</hardwareInterface>
-            </joint>
-            <actuator name="${side}_dock_actuator">
-                <mechanicalReduction>7</mechanicalReduction>
-                <hardwareInterface>EffortJointInterface</hardwareInterface>
-            </actuator>
-        </transmission> -->
-
     </xacro:macro>
-<!-- ########################## END DOCK GENERATOR ############################ -->
+<!-- ########################## END COXA GENERATOR ############################ -->
 
 </robot>
