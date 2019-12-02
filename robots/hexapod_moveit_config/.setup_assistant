@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: hexapod
+    relative_path: robots/hexapod.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/hexapod.srdf
+  CONFIG:
+    author_name: Kirk Boyd
+    author_email: kirkland.boyd@trincoll.edu
+    generated_timestamp: 1575325261
