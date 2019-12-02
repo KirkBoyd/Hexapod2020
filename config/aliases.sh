@@ -12,4 +12,4 @@ alias swsx='source ~/hex_ws/devel/setup.bash'
 alias kz='killall gazebo & killall gzserver & killall gzclient'
 
 alias rlh="swsx; roslaunch hexapod hexapod.launch"
-alias cdx = 'cd ~/hex_ws/src/hexapod/'
+alias cdx='cd ~/hex_ws/src/hexapod/'
