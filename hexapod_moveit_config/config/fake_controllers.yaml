@@ -1,0 +1,31 @@
+controller_list:
+  - name: fake_leg_R_F_controller
+    joints:
+      - R_F_COX_joint
+      - R_F_FEM_joint
+      - R_F_TIB_joint
+  - name: fake_leg_R_M_controller
+    joints:
+      - R_M_COX_joint
+      - R_M_FEM_joint
+      - R_M_TIB_joint
+  - name: fake_leg_R_B_controller
+    joints:
+      - R_B_COX_joint
+      - R_B_FEM_joint
+      - R_B_TIB_joint
+  - name: fake_leg_L_F_controller
+    joints:
+      - L_F_COX_joint
+      - L_F_FEM_joint
+      - L_F_TIB_joint
+  - name: fake_leg_L_M_controller
+    joints:
+      - L_M_COX_joint
+      - L_M_FEM_joint
+      - L_M_TIB_joint
+  - name: fake_leg_L_B_controller
+    joints:
+      - L_B_COX_joint
+      - L_B_FEM_joint
+      - L_B_TIB_joint
