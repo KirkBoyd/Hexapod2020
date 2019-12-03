@@ -8,4 +8,4 @@ moveit_setup_assistant_config:
   CONFIG:
     author_name: Kirk Boyd
     author_email: kirkland.boyd@trincoll.edu
-    generated_timestamp: 1575328104
+    generated_timestamp: 1575342165
