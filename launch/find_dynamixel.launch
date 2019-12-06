@@ -1,0 +1,8 @@
+<launch>
+  <arg name="usb_port"                default="/dev/ttyUSB0"/>
+  <arg name="dxl_baud_rate"           default="1000000"/>
+
+  <node name="find_dynamixel" pkg="hexapod" type="find_dynamixel"
+        output="screen" args="$(arg usb_port) ">
+  </node>
+</launch>
