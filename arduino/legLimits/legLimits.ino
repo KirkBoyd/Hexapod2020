@@ -130,7 +130,8 @@ void setup() {
 }
 
 void loop() {
-  fwd();
+  //SetPosition(2,600);
+   fwd();
   //relaxAll();
   //coxCtr();
   //toesUp();
