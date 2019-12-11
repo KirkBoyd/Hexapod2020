@@ -7,9 +7,9 @@ from dynamixel_workbench_msgs.srv import JointCommand, JointCommandRequest
 from std_msgs.msg import Header
 
 
-class OpenManipulatorMove(object):
+class HexapodMove(object):
     def __init__(self):
-        rospy.loginfo("OpenManipulatorMove INIT...Please wait.")
+        rospy.loginfo("HexapodMove INIT...Please wait.")
 
         # We subscribe to the joint states to have info of the system
 
@@ -29,7 +29,7 @@ class OpenManipulatorMove(object):
         # Create the connection to the service
         self.joint_command_service = rospy.ServiceProxy(joint_command_service_name, JointCommand)
 
-        rospy.loginfo("OpenManipulatorMove Ready!")
+        rospy.loginfo("HexapodMove Ready!")
 
     def joint_states_callback(self,msg):
         """
@@ -111,36 +111,36 @@ class OpenManipulatorMove(object):
         joint_cmd_req.id = joint_id
         joint_cmd_req.goal_position = position
 
-        if joint_id == 7:
-            rospy.logwarn("CHECKING Gripper Value is safe?")
-            if self.check_gripper_pos_safe(position):
+        # if joint_id == 7:
+        #     rospy.logwarn("CHECKING Gripper Value is safe?")
+        #     if self.check_gripper_pos_safe(position):
 
-                # Send through the connection the name of the object to be deleted by the service
-                result = self.joint_command_service(joint_cmd_req)
-                rospy.logwarn("move_one_joint went ok?="+str(result))
-            else:
-                rospy.logwarn("Gripper Value Not safe=" + str(position))
-        else:
-            # Send through the connection the name of the object to be deleted by the service
-            result = self.joint_command_service(joint_cmd_req)
-            rospy.logwarn("move_one_joint went ok?=" + str(result))
+        #         # Send through the connection the name of the object to be deleted by the service
+        #         result = self.joint_command_service(joint_cmd_req)
+        #         rospy.logwarn("move_one_joint went ok?="+str(result))
+        #     else:
+        #         rospy.logwarn("Gripper Value Not safe=" + str(position))
+        # else:
+        #     # Send through the connection the name of the object to be deleted by the service
+        #     result = self.joint_command_service(joint_cmd_req)
+        #     rospy.logwarn("move_one_joint went ok?=" + str(result))
 
     def get_joint_names(self):
         return self.joint_states_msg.name
 
 
-    def check_gripper_pos_safe(self, gripper_value):
-        """
-        We need to check that the gripper pos is -1.0 > position[6] > -3.14
-        Otherwise it gets jammed
-        :param gripper_value:
-        :return:
-        """
-        return (-0.5 > gripper_value > -2.0)
+    # def check_gripper_pos_safe(self, gripper_value):
+    #     """
+    #     We need to check that the gripper pos is -1.0 > position[6] > -3.14
+    #     Otherwise it gets jammed
+    #     :param gripper_value:
+    #     :return:
+    #     """
+    #     return (-0.5 > gripper_value > -2.0)
 
 def movement_sequence_test():
 
-    openman_obj = OpenManipulatorMove()
+    hexapod_obj = HexapodMove()
 
     # NOD
     joint_position_home = [0.08743690699338913, 1.0385050773620605, -2.345456600189209, -0.016873789951205254,
@@ -153,13 +153,13 @@ def movement_sequence_test():
                        0.5292233824729919, 0.003067961661145091, -1.0599807500839233]
 
 
-    # SAY NO
-    joint_left = [0.44332045316696167, 1.0630487203598022, -2.345456600189209, 0.5568350553512573, -1.483359456062317,
-                  0.004601942375302315, -1.0599807500839233]
-    joint_right = [-0.20862139761447906, 1.0906603336334229, -2.3071072101593018, -0.6488738656044006,
-                   -1.483359456062317, -0.4417864680290222, -1.0599807500839233]
-    joint_middle = [0.0076699042692780495, 1.1274758577346802, -2.325515031814575, 0.3344078063964844,
-                    -1.4848934412002563, 0.46172821521759033, -1.0599807500839233]
+    # # SAY NO
+    # joint_left = [0.44332045316696167, 1.0630487203598022, -2.345456600189209, 0.5568350553512573, -1.483359456062317,
+    #               0.004601942375302315, -1.0599807500839233]
+    # joint_right = [-0.20862139761447906, 1.0906603336334229, -2.3071072101593018, -0.6488738656044006,
+    #                -1.483359456062317, -0.4417864680290222, -1.0599807500839233]
+    # joint_middle = [0.0076699042692780495, 1.1274758577346802, -2.325515031814575, 0.3344078063964844,
+    #                 -1.4848934412002563, 0.46172821521759033, -1.0599807500839233]
 
     joint_position_sequence_nod = []
     joint_position_sequence_nod.append(joint_position_home)
@@ -171,25 +171,25 @@ def movement_sequence_test():
     joint_position_sequence_nod.append(joint_position1)
     joint_position_sequence_nod.append(joint_position_home)
 
-    joint_position_sequence_say_no = []
-    joint_position_sequence_nod.append(joint_position_home)
-    joint_position_sequence_nod.append(joint_left)
-    joint_position_sequence_nod.append(joint_middle)
-    joint_position_sequence_nod.append(joint_right)
-    joint_position_sequence_nod.append(joint_left)
-    joint_position_sequence_nod.append(joint_middle)
-    joint_position_sequence_nod.append(joint_right)
-    joint_position_sequence_nod.append(joint_position_home)
+    # joint_position_sequence_say_no = []
+    # joint_position_sequence_nod.append(joint_position_home)
+    # joint_position_sequence_nod.append(joint_left)
+    # joint_position_sequence_nod.append(joint_middle)
+    # joint_position_sequence_nod.append(joint_right)
+    # joint_position_sequence_nod.append(joint_left)
+    # joint_position_sequence_nod.append(joint_middle)
+    # joint_position_sequence_nod.append(joint_right)
+    # joint_position_sequence_nod.append(joint_position_home)
 
 
 
     for joint_position_array in joint_position_sequence_nod:
-        openman_obj.move_all_joints(joint_position_array)
+        hexapod_obj.move_all_joints(joint_position_array)
         time.sleep(0.5)
 
-    for joint_position_array in joint_position_sequence_say_no:
-        openman_obj.move_all_joints(joint_position_array)
-        time.sleep(0.9)
+    # for joint_position_array in joint_position_sequence_say_no:
+    #     hexapod_obj.move_all_joints(joint_position_array)
+    #     time.sleep(0.9)
 
 def move_joints_test():
     """
@@ -197,18 +197,18 @@ def move_joints_test():
     live, which is quite dangerous!
     :return:
     """
-    openman_obj = OpenManipulatorMove()
-    joint_names = openman_obj.get_joint_names()
+    hexapod_obj = HexapodMove()
+    joint_names = hexapod_obj.get_joint_names()
     rospy.logwarn("Starting Moving Joints GUI...")
     while not rospy.is_shutdown():
         rospy.logwarn("#######"+str(joint_names)+"#####")
         joint_id = int(raw_input("Joint ID="))
         joint_position = float(raw_input("Joint Position Radians="))
-        openman_obj.move_one_joint(joint_id, joint_position, unit="rad")
+        hexapod_obj.move_one_joint(joint_id, joint_position, unit="rad")
         rospy.logwarn("####################")
 
 
 if __name__ == "__main__":
-    rospy.init_node('move_openmanipulator_node', log_level=rospy.WARN)
+    rospy.init_node('move_hexapod_node', log_level=rospy.WARN)
     #move_joints_test()
-    movement_sequence_test()
+    #movement_sequence_test()

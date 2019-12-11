@@ -7,57 +7,57 @@ F_R_COX_joint:
   #Operating_Mode: 3 ##DO NOT USE THIS!! THIS WAS FOR X SERIES SERVO!
   #Profile_Acceleration: 1##DO NOT USE THIS!! THIS WAS FOR X SERIES SERVO!
   #Profile_Velocity: 1##DO NOT USE THIS!! THIS WAS FOR X SERIES SERVO!
-# M_R_COX_joint:
-#   ID: 2
-#   Return_Delay_Time: 0
-# B_R_COX_joint:
-#   ID: 3
-#   Return_Delay_Time: 0
-# B_L_COX_joint:
-#   ID: 4
-#   Return_Delay_Time: 0
-# M_L_COX_joint:
-#   ID: 5
-#   Return_Delay_Time: 0
-# F_L_COX_joint:
-#   ID: 6
-#   Return_Delay_Time: 0
-# F_R_FEM_joint:
-#   ID: 7
-#   Return_Delay_Time: 0
-# M_R_FEM_joint:
-#   ID: 8
-#   Return_Delay_Time: 0
-# B_R_FEM_joint:
-#   ID: 9
-#   Return_Delay_Time: 0
-# B_L_FEM_joint:
-#   ID: 10
-#   Return_Delay_Time: 0
-# M_L_FEM_joint:
-#   ID: 11
-#   Return_Delay_Time: 0
-# F_L_FEM_joint:
-#   ID: 12
-#   Return_Delay_Time: 0
-# F_R_TIB_joint:
-#   ID: 13
-#   Return_Delay_Time: 0
-# M_R_TIB_joint:
-#   ID: 14
-#   Return_Delay_Time: 0
-# B_R_TIB_joint:
-#   ID: 15
-#   Return_Delay_Time: 0
-# B_L_TIB_joint:
-#   ID: 16
-#   Return_Delay_Time: 0
-# M_L_TIB_joint:
-#   ID: 17
-#   Return_Delay_Time: 0
-# F_L_TIB_joint:
-#   ID: 18
-#   Return_Delay_Time: 0
+M_R_COX_joint:
+  ID: 2
+  Return_Delay_Time: 0
+B_R_COX_joint:
+  ID: 3
+  Return_Delay_Time: 0
+B_L_COX_joint:
+  ID: 4
+  Return_Delay_Time: 0
+M_L_COX_joint:
+  ID: 5
+  Return_Delay_Time: 0
+F_L_COX_joint:
+  ID: 6
+  Return_Delay_Time: 0
+F_R_FEM_joint:
+  ID: 7
+  Return_Delay_Time: 0
+M_R_FEM_joint:
+  ID: 8
+  Return_Delay_Time: 0
+B_R_FEM_joint:
+  ID: 9
+  Return_Delay_Time: 0
+B_L_FEM_joint:
+  ID: 10
+  Return_Delay_Time: 0
+M_L_FEM_joint:
+  ID: 11
+  Return_Delay_Time: 0
+F_L_FEM_joint:
+  ID: 12
+  Return_Delay_Time: 0
+F_R_TIB_joint:
+  ID: 13
+  Return_Delay_Time: 0
+M_R_TIB_joint:
+  ID: 14
+  Return_Delay_Time: 0
+B_R_TIB_joint:
+  ID: 15
+  Return_Delay_Time: 0
+B_L_TIB_joint:
+  ID: 16
+  Return_Delay_Time: 0
+M_L_TIB_joint:
+  ID: 17
+  Return_Delay_Time: 0
+F_L_TIB_joint:
+  ID: 18
+  Return_Delay_Time: 0
 
 # You can find control table of Dynamixel on emanual (http://emanual.robotis.com/#control-table)
 # Control table item has to be set Camel_Case and not included whitespace
