@@ -10,6 +10,7 @@ project(hexapod)
 find_package(catkin REQUIRED COMPONENTS
   dynamixel_sdk
   dynamixel_workbench_toolbox
+ # dynamixel_workbench_msgs
   geometry_msgs
   roscpp
   rospy
