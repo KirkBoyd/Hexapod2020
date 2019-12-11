@@ -11,8 +11,8 @@
 
   <param name="scan_range"               value="$(arg scan_range)"/>
 
-  <param name="profile_velocity"         value="$(arg profile_velocity)"/>
-  <param name="profile_acceleration"     value="$(arg profile_acceleration)"/>
+  <!-- <param name="profile_velocity"         value="$(arg profile_velocity)"/> -->
+  <!-- <param name="profile_acceleration"     value="$(arg profile_acceleration)"/> -->
 
   <node name="position_control" pkg="dynamixel_workbench_controllers" type="position_control" required="true" output="screen"/>
 </launch>
