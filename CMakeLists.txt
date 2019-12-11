@@ -108,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+  INCLUDE_DIRS include
 #  LIBRARIES hexapod
 CATKIN_DEPENDS dynamixel_sdk dynamixel_workbench_toolbox geometry_msgs roscpp rospy sensor_msgs std_msgs
 #  DEPENDS system_lib
