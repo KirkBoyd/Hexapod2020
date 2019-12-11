@@ -142,6 +142,10 @@ include_directories(
 add_executable(find_dynamixel src/find_dynamixel.cpp)
 target_link_libraries(find_dynamixel ${catkin_LIBRARIES})
 
+add_executable(position_control src/position_control.cpp)
+add_dependencies(position_control ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(position_control ${catkin_LIBRARIES})
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
