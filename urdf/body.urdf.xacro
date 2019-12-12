@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
-    <xacro:property name="HEX_MASS" value="0.1"/>
+    <xacro:property name="HEX_MASS" value="0.1"/> <!--body mass: 1.503462, Total Mass: 2.812273-->
 
     <xacro:property name="HEX_LENGTH" value="0.4"/>
     <xacro:property name="HEX_WIDTH" value="0.05"/>

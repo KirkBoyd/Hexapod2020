@@ -1,0 +1,296 @@
+{
+  "keys": {},
+  "groups": {
+    "pluginmanager": {
+      "keys": {
+        "running-plugins": {
+          "type": "repr",
+          "repr": "{u'rqt_ez_publisher/EzPublisher': [1], u'rqt_topic/TopicPlugin': [1]}"
+        }
+      },
+      "groups": {
+        "plugin__rqt_graph__RosGraph__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__RosGraphUi": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u'Node Graph'"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "graph_type_combo_box_index": {
+                  "type": "repr",
+                  "repr": "u'0'"
+                },
+                "hide_tf_nodes_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'false'"
+                },
+                "filter_line_edit_text": {
+                  "type": "repr",
+                  "repr": "u'/'"
+                },
+                "highlight_connections_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "group_image_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "unreachable_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "actionlib_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "topic_filter_line_edit_text": {
+                  "type": "repr",
+                  "repr": "u'/'"
+                },
+                "group_tf_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "quiet_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "dead_sinks_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "leaf_topics_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "namespace_cluster_spin_box_value": {
+                  "type": "repr",
+                  "repr": "u'2'"
+                },
+                "hide_dynamic_reconfigure_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "auto_fit_graph_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_tf_tree__RosTfTree__1": {
+          "keys": {},
+          "groups": {
+            "plugin": {
+              "keys": {
+                "highlight_connections_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                },
+                "auto_fit_graph_check_box_state": {
+                  "type": "repr",
+                  "repr": "u'true'"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_ez_publisher__EzPublisher__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__EzPublisherPluginUi": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u''"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "texts": {
+                  "type": "repr",
+                  "repr": "[u'/dynamixel_workbench/joint_states/header/frame_id', u'/dynamixel_workbench/joint_states/name[0]', u'/dynamixel_workbench/joint_states/position[0]', u'/dynamixel_workbench/joint_states/velocity[0]']"
+                },
+                "publish_interval": {
+                  "type": "repr",
+                  "repr": "100"
+                },
+                "configurable": {
+                  "type": "repr",
+                  "repr": "True"
+                }
+              },
+              "groups": {
+                "dynamixel_workbench": {
+                  "keys": {},
+                  "groups": {
+                    "joint_states": {
+                      "keys": {
+                        "position[0]_is_repeat": {
+                          "type": "repr",
+                          "repr": "False"
+                        },
+                        "position[0]_range": {
+                          "type": "repr",
+                          "repr": "(-1.0, 0.67)"
+                        },
+                        "name[0]_is_repeat": {
+                          "type": "repr",
+                          "repr": "False"
+                        },
+                        "velocity[0]_range": {
+                          "type": "repr",
+                          "repr": "(-1.0, 1.0)"
+                        },
+                        "name[0]_range": {
+                          "type": "repr",
+                          "repr": "(0, 0)"
+                        },
+                        "velocity[0]_is_repeat": {
+                          "type": "repr",
+                          "repr": "False"
+                        }
+                      },
+                      "groups": {
+                        "header": {
+                          "keys": {
+                            "frame_id_is_repeat": {
+                              "type": "repr",
+                              "repr": "False"
+                            },
+                            "frame_id_range": {
+                              "type": "repr",
+                              "repr": "(0, 0)"
+                            }
+                          },
+                          "groups": {}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "plugin__rqt_topic__TopicPlugin__1": {
+          "keys": {},
+          "groups": {
+            "plugin": {
+              "keys": {
+                "tree_widget_header_state": {
+                  "type": "repr(QByteArray.hex)",
+                  "repr(QByteArray.hex)": "QtCore.QByteArray('000000ff000000000000000100000000000000000100000000000000000000000000000000000003f0000000050101000100000000000000000500000064ffffffff000000810000000300000005000001410000000100000003000001520000000100000003000000680000000100000003000000390000000100000003000000bc0000000100000003000003e80000000064')",
+                  "pretty-print": "                              d         A     R     h     9              "
+                }
+              },
+              "groups": {}
+            },
+            "dock_widget__TopicWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u'Topic Monitor'"
+                }
+              },
+              "groups": {}
+            }
+          }
+        },
+        "plugin__rqt_publisher__Publisher__1": {
+          "keys": {},
+          "groups": {
+            "dock_widget__PublisherWidget": {
+              "keys": {
+                "dockable": {
+                  "type": "repr",
+                  "repr": "True"
+                },
+                "parent": {
+                  "type": "repr",
+                  "repr": "None"
+                },
+                "dock_widget_title": {
+                  "type": "repr",
+                  "repr": "u'Message Publisher'"
+                }
+              },
+              "groups": {}
+            },
+            "plugin": {
+              "keys": {
+                "publishers": {
+                  "type": "repr",
+                  "repr": "u'[{\\'type_name\\': \\'sensor_msgs/JointState\\', \\'topic_name\\': \\'/dynamixel_workbench/joint_states\\', \\'enabled\\': False, \\'rate\\': 1.0, \\'expressions\\': {u\\'/dynamixel_workbench/joint_states/name\\': \"[\\'B_L_COX_joint\\', \\'B_L_FEM_joint\\', \\'B_L_TIB_joint\\', \\'B_R_COX_joint\\', \\'B_R_FEM_joint\\', \\'B_R_TIB_joint\\', \\'F_L_COX_joint\\', \\'F_L_FEM_joint\\', \\'F_L_TIB_joint\\', \\'F_R_COX_joint\\', \\'F_R_FEM_joint\\', \\'F_R_TIB_joint\\', \\'M_L_COX_joint\\', \\'M_L_FEM_joint\\', \\'M_L_TIB_joint\\', \\'M_R_COX_joint\\', \\'M_R_FEM_joint\\', \\'M_R_TIB_joint\\']\", u\\'/dynamixel_workbench/joint_states/effort\\': \\'(-0.9000000357627869, 0.0, 0.0, 0.0, 0.0, -6.5, 0.0, 0.0, 0.0, 0.0, 0.800000011920929, 0.0, 0.0, 0.0, 0.0, 0.0, 7.200000286102295, -6.5)\\', u\\'/dynamixel_workbench/joint_states/velocity\\': \\'(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0460766926407814, 0.0460766926407814, 0.0)\\', u\\'/dynamixel_workbench/joint_states/position\\': \\'(-0.20226523876190186, 0.4857598543167114, -1.247635841369629, -0.025566309690475464, -0.5471190214157104, 0.32213547825813293, -0.27611613273620605, -0.5113261938095093, -0.4141741991043091, -0.2505498230457306, 0.5675720572471619, 0.08181218802928925, -0.061359141021966934, 0.6647240519523621, 0.4346272349357605, 0.39372116327285767, -0.27611613273620605, 0.5624588131904602)\\'}, \\'publisher_id\\': 0, \\'counter\\': 0}]'"
+                }
+              },
+              "groups": {}
+            }
+          }
+        }
+      }
+    },
+    "mainwindow": {
+      "keys": {
+        "geometry": {
+          "type": "repr(QByteArray.hex)",
+          "repr(QByteArray.hex)": "QtCore.QByteArray('01d9d0cb00020000000003e000000018000007f100000437000003e000000034000007f10000043700000000000000000780')",
+          "pretty-print": "           7   4   7     "
+        },
+        "state": {
+          "type": "repr(QByteArray.hex)",
+          "repr(QByteArray.hex)": "QtCore.QByteArray('000000ff00000000fd000000010000000300000412000003eefc0100000003fb0000004c007200710074005f00740066005f0074007200650065005f005f0052006f0073005400660054007200650065005f005f0031005f005f0052006f0073005400660054007200650065005500690100000000000004e00000000000000000fb00000044007200710074005f00670072006100700068005f005f0052006f007300470072006100700068005f005f0031005f005f0052006f007300470072006100700068005500690100000000000002590000000000000000fc00000000000004120000041200fffffffc0200000003fb0000004c007200710074005f0074006f007000690063005f005f0054006f0070006900630050006c007500670069006e005f005f0031005f005f0054006f0070006900630057006900640067006500740100000000000001510000006d00fffffffb0000006a007200710074005f0065007a005f007000750062006c00690073006800650072005f005f0045007a005000750062006c00690073006800650072005f005f0031005f005f0045007a005000750062006c006900730068006500720050006c007500670069006e005500690100000157000002970000010600fffffffb00000058007200710074005f007000750062006c00690073006800650072005f005f005000750062006c00690073006800650072005f005f0031005f005f005000750062006c006900730068006500720057006900640067006500740100000283000001870000000000000000000004120000000000000004000000040000000800000008fc00000001000000030000000100000036004d0069006e0069006d0069007a006500640044006f0063006b00570069006400670065007400730054006f006f006c0062006100720000000000ffffffff0000000000000000')",
+          "pretty-print": "                 Lrqt_tf_tree__RosTfTree__1__RosTfTreeUi          Drqt_graph__RosGraph__1__RosGraphUi                                                                Q m                                                           W                                                                                                                     "
+        }
+      },
+      "groups": {
+        "toolbar_areas": {
+          "keys": {
+            "MinimizedDockWidgetsToolbar": {
+              "type": "repr",
+              "repr": "8"
+            }
+          },
+          "groups": {}
+        }
+      }
+    }
+  }
+}
