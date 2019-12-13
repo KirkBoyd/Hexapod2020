@@ -14,5 +14,5 @@
   <!-- <param name="profile_velocity"         value="$(arg profile_velocity)"/> -->
   <!-- <param name="profile_acceleration"     value="$(arg profile_acceleration)"/> -->
 
-  <node name="position_control" pkg="hexapod" type="position_control.cpp" required="true" output="screen"/>
+  <node name="position_control" pkg="dynamixel_workbench_controllers" type="position_control.cpp" required="true" output="screen"/>
 </launch>
