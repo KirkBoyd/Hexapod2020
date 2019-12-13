@@ -4,6 +4,10 @@
     <xacro:include filename="$(find hexapod)/urdf/body.urdf.xacro"/>
     <xacro:include filename="$(find hexapod)/urdf/leg.urdf.xacro"/>
 
+    <xacro:property name="package" value="$(find hexapod)"/>
+    <xacro:property name="origins" value="${load_yaml(package + '/config/joint_origins.yaml')}"/>
+    <xacro:property name="inertias" value="${load_yaml(package + '/config/inertias.yaml')}"/>
+
     <!-- <xacro:include filename="$(find hexapod)/urdf/hexapod.gazebo" /> -->
 
     <!-- Footprint link -->

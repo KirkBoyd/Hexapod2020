@@ -58,18 +58,28 @@
         </link>
     </xacro:macro>
 
-    <!--########################## GENERATE IDENTITY ORIGIN LINK WITH IDENTICAL COLLISION/VISUAL MESH XACRO ##########################-->
-    <!-- <xacro:macro name="generate_joint" params="joint_name parent child ">
-        <link name="${link_name}">
+<!--########################## GENERATE HEXAPOD IDENTITY ORIGIN LINK WITH IDENTICAL COLLISION/VISUAL MESH XACRO ##########################-->
+    <xacro:macro name="generate_IdOr_SidePosJtype_same_mesh" params="side:=^|'' position joint_type:=^|'' stl">
+        <link name="${side}_${position}_${joint_type}_link">
             <collision>
                 <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
             </collision>
             <visual>
                 <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
             </visual>
-            <xacro:MINIMUM_INERTIAL/>
+            <xacro:generate_inertia side="${side}" position="${position}" joint_type="COX"/>
         </link>
-    </xacro:macro> -->
+    </xacro:macro>
+
+<!--########################## GENERATE IDENTITY ORIGIN IDENTICAL COLLISION/VISUAL MESH XACRO ##########################-->
+    <xacro:macro name="generate_IdOr_CollViz_mesh" params="stl">
+            <collision>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </collision>
+            <visual>
+                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
+            </visual>
+    </xacro:macro>
 
 <!--########################## STL XACRO ##########################-->
     <xacro:macro name="add_stl" params="scale fname">
@@ -120,6 +130,23 @@
                 <material>Gazebo/${color}</material>
         </gazebo>
     </xacro:macro>
+
+
+<!-- ########################## HEXAPOD INERTIA GENERATOR ############################ -->
+    <xacro:macro name="generate_inertia" params="side position joint_type">
+               
+        <xacro:property name="coords" value="${origins[side][position][joint_type]}"/>
+
+        <inertial>
+            <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+            <mass value="${inertias[side][position][joint_type]['m']}"/>
+            <inertia ixx="${inertias[side][position][joint_type]['ixx']}" ixy="${inertias[side][position][joint_type]['ixy']}" ixz="${inertias[side][position][joint_type]['ixz']}" 
+            iyy="${inertias[side][position][joint_type]['iyy']}" iyz="${inertias[side][position][joint_type]['iyz']}" izz="${inertias[side][position][joint_type]['izz']}"/>
+        </inertial>
+
+    </xacro:macro>
+<!-- ########################## END INERTIA GENERATOR ############################ -->
+
 
 
 <!-- ################################################################## -->

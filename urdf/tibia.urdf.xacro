@@ -5,7 +5,8 @@
     <xacro:macro name="generate_tibia" params="side position joint_type:=TIB">
 
         <xacro:generate_IdOr_link_same_mesh link_name="${side}_${position}_TIB_link" stl="tibia_${side}_${position}"/>
-        
+        <xacro:generate_IdOr_SidePosJtype_same_mesh side="${side}" position="${position}" joint_type="TIB" stl="tibia_${side}_${position}"/>
+
         <xacro:property name="coords" value="${origins[side][position][joint_type]}"/>
         <joint name="${side}_${position}_TIB_joint" type="revolute" >
             <origin xyz="${coords['x']} ${coords['y']} ${coords['z']}" rpy="0 0 0"/>

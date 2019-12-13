@@ -8,18 +8,7 @@
   <!-- ################################################################## -->
   <!-- ########################## GENERATORS ############################ -->
   <!-- ################################################################## -->
-  <!--########################## GENERATE IDENTITY ORIGIN LINK WITH IDENTICAL COLLISION/VISUAL MESH XACRO ##########################-->
-  <!-- <xacro:macro name="generate_joint" params="joint_name parent child ">
-        <link name="${link_name}">
-            <collision>
-                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
-            </collision>
-            <visual>
-                <xacro:add_stl scale="${SCALE}" fname="${stl}"/>
-            </visual>
-            <xacro:MINIMUM_INERTIAL/>
-        </link>
-    </xacro:macro> -->
+  <!-- ########################## END INERTIA GENERATOR ############################ -->
   <!-- ################################################################## -->
   <!-- ############################ COLORS ############################## -->
   <!-- ################################################################## -->
@@ -48,31 +37,9 @@
   <material name="orange">
     <color rgba="1.0 0.69 0.0 1.0"/>
   </material>
+  <!--body mass: 1.503462, Total Mass: 2.812273-->
   <!-- ########################## END HEX GENERATOR ############################ -->
   <!-- <xacro:include filename="$(find hexapod)/urdf/general.urdf.xacro"/> -->
-  <!-- <xacro:macro name="L_F_COX_ORIG"><origin xyz="0.057077	-0.066312	0.007" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="L_F_FEM_ORIG"><origin xyz="0.055388	-0.08376	0.064284" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="L_F_TIB_ORIG"><origin xyz="0.0831	-0.09976	0.064284" rpy="0 0 0"/></xacro:macro>
-
-<xacro:macro name="L_M_COX_ORIG"><origin xyz="0.0635	0	0.007" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="L_M_FEM_ORIG"><origin xyz="0.070761	-0.015954	0.064284" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="L_M_TIB_ORIG"><origin xyz="0.102761	-0.015955	0.064284" rpy="0 0 0"/></xacro:macro>
-
-<xacro:macro name="L_B_COX_ORIG"><origin xyz="0.057077	0.066312	0.007" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="L_B_FEM_ORIG"><origin xyz="0.071342	0.056126	0.064284" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="L_B_TIB_ORIG"><origin xyz="0.099055	0.072126	0.064284" rpy="0 0 0"/></xacro:macro>
-
-<xacro:macro name="R_F_COX_ORIG"><origin xyz="-0.057077	-0.066312	0.007" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="R_F_FEM_ORIG"><origin xyz="-0.055388	-0.08376	0.064284" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="R_F_TIB_ORIG"><origin xyz="-0.0831	-0.09976	0.064284" rpy="0 0 0"/></xacro:macro>
-
-<xacro:macro name="R_M_COX_ORIG"><origin xyz="-0.0635	0	0.007" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="R_M_FEM_ORIG"><origin xyz="-0.070761	-0.015954	0.064284" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="R_M_TIB_ORIG"><origin xyz="-0.102761	-0.015955	0.064284" rpy="0 0 0"/></xacro:macro>
-
-<xacro:macro name="R_B_COX_ORIG"><origin xyz="-0.057077	0.066312	0.007" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="R_B_FEM_ORIG"><origin xyz="-0.071342	0.056126	0.064284" rpy="0 0 0"/></xacro:macro>
-<xacro:macro name="R_B_TIB_ORIG"><origin xyz="-0.099055	0.072126	0.06428" rpy="0 0 0"/></xacro:macro> -->
   <!-- <xacro:macro name="get_origin" params="side position joint_type"> -->
   <!-- <xacro:property name="coords" value="${origins['${side}_${position}_${joint_type}']}"/> -->
   <!-- </xacro:macro> -->
@@ -143,12 +110,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="4.45078267e-05" ixy="2.313093757e-06" ixz="5.691000762e-05" iyy="0.0001480260304" iyz="-2.102291688e-06" izz="0.0001110195228"/>
     </inertial>
   </link>
   <joint name="R_M_COX_joint" type="revolute">
@@ -179,12 +143,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="4.45078267e-05" ixy="2.313093757e-06" ixz="5.691000762e-05" iyy="0.0001480260304" iyz="-2.102291688e-06" izz="0.0001110195228"/>
     </inertial>
   </link>
   <joint name="R_M_FEM_joint" type="revolute">
@@ -234,6 +195,23 @@
                       izz="1.66666666667e-08"/> -->
     </inertial>
   </link>
+  <link name="R_M_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="4.45078267e-05" ixy="2.313093757e-06" ixz="5.691000762e-05" iyy="0.0001480260304" iyz="-2.102291688e-06" izz="0.0001110195228"/>
+    </inertial>
+  </link>
   <joint name="R_M_TIB_joint" type="revolute">
     <origin rpy="0 0 0" xyz="-0.032 0 0"/>
     <parent link="R_M_FEM_link"/>
@@ -262,12 +240,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="-9.271630416e-05" ixz="4.990877646e-05" iyy="0.0001250219851" iyz="5.781016591e-05" izz="0.0001940341209"/>
     </inertial>
   </link>
   <joint name="R_F_COX_joint" type="revolute">
@@ -298,12 +273,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="-9.271630416e-05" ixz="4.990877646e-05" iyy="0.0001250219851" iyz="5.781016591e-05" izz="0.0001940341209"/>
     </inertial>
   </link>
   <joint name="R_F_FEM_joint" type="revolute">
@@ -353,6 +325,23 @@
                       izz="1.66666666667e-08"/> -->
     </inertial>
   </link>
+  <link name="R_F_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="-9.271630416e-05" ixz="4.990877646e-05" iyy="0.0001250219851" iyz="5.781016591e-05" izz="0.0001940341209"/>
+    </inertial>
+  </link>
   <joint name="R_F_TIB_joint" type="revolute">
     <origin rpy="0 0 0" xyz="-0.027712 0 0"/>
     <parent link="R_F_FEM_link"/>
@@ -381,12 +370,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="9.271630416e-05" ixz="4.990877646e-05" iyy="0.0001250219851" iyz="-5.781016591e-05" izz="0.0001940341209"/>
     </inertial>
   </link>
   <joint name="R_B_COX_joint" type="revolute">
@@ -417,12 +403,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="9.271630416e-05" ixz="4.990877646e-05" iyy="0.0001250219851" iyz="-5.781016591e-05" izz="0.0001940341209"/>
     </inertial>
   </link>
   <joint name="R_B_FEM_joint" type="revolute">
@@ -472,6 +455,23 @@
                       izz="1.66666666667e-08"/> -->
     </inertial>
   </link>
+  <link name="R_B_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_R_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="9.271630416e-05" ixz="4.990877646e-05" iyy="0.0001250219851" iyz="-5.781016591e-05" izz="0.0001940341209"/>
+    </inertial>
+  </link>
   <joint name="R_B_TIB_joint" type="revolute">
     <origin rpy="0 0 0" xyz="-0.027712 0 0"/>
     <parent link="R_B_FEM_link"/>
@@ -500,12 +500,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="4.45078267e-05" ixy="-2.313098758e-06" ixz="-5.691000762e-05" iyy="0.0001480260304" iyz="-2.102295689e-06" izz="0.0001110195228"/>
     </inertial>
   </link>
   <joint name="L_M_COX_joint" type="revolute">
@@ -536,12 +533,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="4.45078267e-05" ixy="-2.313098758e-06" ixz="-5.691000762e-05" iyy="0.0001480260304" iyz="-2.102295689e-06" izz="0.0001110195228"/>
     </inertial>
   </link>
   <joint name="L_M_FEM_joint" type="revolute">
@@ -591,6 +585,23 @@
                       izz="1.66666666667e-08"/> -->
     </inertial>
   </link>
+  <link name="L_M_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_M.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="4.45078267e-05" ixy="-2.313098758e-06" ixz="-5.691000762e-05" iyy="0.0001480260304" iyz="-2.102295689e-06" izz="0.0001110195228"/>
+    </inertial>
+  </link>
   <joint name="L_M_TIB_joint" type="revolute">
     <origin rpy="0 0 0" xyz="0.032 0 0"/>
     <parent link="L_M_FEM_link"/>
@@ -619,12 +630,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="9.271630416e-05" ixz="-4.990877646e-05" iyy="0.0001250219851" iyz="5.781016591e-05" izz="0.0001940341209"/>
     </inertial>
   </link>
   <joint name="L_F_COX_joint" type="revolute">
@@ -655,12 +663,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="9.271630416e-05" ixz="-4.990877646e-05" iyy="0.0001250219851" iyz="5.781016591e-05" izz="0.0001940341209"/>
     </inertial>
   </link>
   <joint name="L_F_FEM_joint" type="revolute">
@@ -710,6 +715,23 @@
                       izz="1.66666666667e-08"/> -->
     </inertial>
   </link>
+  <link name="L_F_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_F.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="9.271630416e-05" ixz="-4.990877646e-05" iyy="0.0001250219851" iyz="5.781016591e-05" izz="0.0001940341209"/>
+    </inertial>
+  </link>
   <joint name="L_F_TIB_joint" type="revolute">
     <origin rpy="0 0 0" xyz="0.027712 0 0"/>
     <parent link="L_F_FEM_link"/>
@@ -738,12 +760,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="-9.271630416e-05" ixz="-4.990877646e-05" iyy="0.0001250219851" iyz="-5.781016591e-05" izz="0.0001940341209"/>
     </inertial>
   </link>
   <joint name="L_B_COX_joint" type="revolute">
@@ -774,12 +793,9 @@
       </geometry>
     </visual>
     <inertial>
-      <origin rpy="0 0 0" xyz="0 0 0"/>
-      <mass value="0.1"/>
-      <inertia ixx="0.02" ixy="0.0" ixz="0.0" iyy="0.02" iyz="0.0" izz="0.02"/>
-      <!-- <inertia ixx="1.66666666667e-08" ixy="0.0" ixz="0.0"
-                      iyy="1.66666666667e-08" iyz="0.0"
-                      izz="1.66666666667e-08"/> -->
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="-9.271630416e-05" ixz="-4.990877646e-05" iyy="0.0001250219851" iyz="-5.781016591e-05" izz="0.0001940341209"/>
     </inertial>
   </link>
   <joint name="L_B_FEM_joint" type="revolute">
@@ -829,6 +845,23 @@
                       izz="1.66666666667e-08"/> -->
     </inertial>
   </link>
+  <link name="L_B_TIB_link">
+    <collision>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </collision>
+    <visual>
+      <geometry>
+        <mesh filename="package://hexapod/urdf/models/tibia_L_B.stl" scale="0.001 0.001 0.001"/>
+      </geometry>
+    </visual>
+    <inertial>
+      <!-- <origin xyz="0 0 0" rpy="0 0 0" /> -->
+      <mass value="0.02769"/>
+      <inertia ixx="0.0001500263821" ixy="-9.271630416e-05" ixz="-4.990877646e-05" iyy="0.0001250219851" iyz="-5.781016591e-05" izz="0.0001940341209"/>
+    </inertial>
+  </link>
   <joint name="L_B_TIB_joint" type="revolute">
     <origin rpy="0 0 0" xyz="0.027712 0 0"/>
     <parent link="L_B_FEM_link"/>
@@ -846,3 +879,4 @@
     <material>Gazebo/Green</material>
   </gazebo>
 </robot>
+
