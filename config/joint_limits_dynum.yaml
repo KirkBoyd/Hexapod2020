@@ -1,0 +1,62 @@
+L:
+  F:
+    COX:   
+      max: 650
+      min: 360
+    FEM:
+      max: 600
+      min: 448
+    TIB: 
+      max: 600
+      min: 420
+  M:
+    COX:   
+      max: 575
+      min: 420
+    FEM: 
+      max: 620
+      min: 420
+    TIB: 
+      max:  600
+      min:  420
+  B:
+    COX:   
+      max: 680
+      min: 360
+    FEM:
+      max: 640
+      min: 420
+    TIB:
+      max:  600
+      min:  420
+R:
+  F:
+    COX:   
+      max: 680
+      min: 390
+    FEM:
+      max: 640
+      min: 400
+    TIB:
+      max: 600
+      min: 400
+  M:
+    COX:   
+      max: 650
+      min: 420
+    FEM:
+      max: 600
+      min: 448
+    TIB: 
+      max: 620
+      min: 450
+  B:
+    COX:   
+      max: 680
+      min: 360
+    FEM:
+      max: 620
+      min: 448
+    TIB:
+      max: 610
+      min: 410
