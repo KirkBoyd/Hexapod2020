@@ -1,8 +1,12 @@
 #! /usr/bin/env python
 
 import rospy
-from geometry_msgs.msg import Twist
+from geometry_msgs.msg import Twist, Point
 from sensor_msgs.msg import LaserScan
+pt = Point()
+pt.x = 0
+pt.y = 0
+pt.z = 0
 vel = Twist()
 vel.linear.x = 0.5
 vel.linear.y = 0
@@ -10,7 +14,7 @@ vel.linear.z = 0
 vel.angular.x = 0
 vel.angular.y = 0
 vel.angular.z = 0
-turn = False
+#turn = False
 
 
 def callback(msg):
@@ -24,13 +28,13 @@ def callback(msg):
     else:
         vel.linear.x = 0.5
         vel.angular.z = 0
-#need to modify so that we have array values for depth
+# need to modify so that we have array values for depth
 # should be a depth for each angle
 # this publishes op=ur depth data, and we do the math here, and just pass a distance from the candle
 
 rospy.init_node('topics_quiz_node')
-pub = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
-sub = rospy.Subscriber('/kobuki/laser/scan', LaserScan, callback)
+pub = rospy.Publisher('/candle/position', Twist, queue_size=1)
+sub = rospy.Subscriber('/scan', LaserScan, callback)
 rate = rospy.Rate(2)
 
 while not rospy.is_shutdown():
