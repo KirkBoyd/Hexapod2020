@@ -1,5 +1,7 @@
 #include <ros.h>
-#include <std_msgs/Float32.h>
+#include <std_msgs/String.h> // for example publisher
+#include <std_msgs/Empty.h> // for example publisher
+#include <std_msgs/Float32.h> 
 #include <std_msgs/Bool.h>
 #include <geometry_msgs/Point.h>
 
@@ -10,11 +12,7 @@ bool candleLit = false;
 float candleX = 0; //may need to change type
 float candleY = 0;
 
-
-ros::Subscriber<geometry_msgs::Point> subCandlePosition("candle/position", cbCandlePosition);
-ros::Subscriber<std_msgs::Bool> subCandleFound("candle/found", cbCandleFound);
-ros::Subscriber<std_msgs::Bool> subCandleLit("candle/is_lit", cbCandleIsLit);
-
+// define callback functions BEFORE creating subscribers //
 void cbCandleFound(const std_msgs::Bool& msg){
     candleFound = msg.data;
 }
@@ -27,7 +25,20 @@ void cbCandlePosition(const geometry_msgs::Point& msg){
     candleX = msg.x;
     candleY = msg.y;
 }
-// examples from SQRL:
+
+// create subscribers //
+ros::Subscriber<std_msgs::Bool> subCandleFound("candle/found", cbCandleFound);
+ros::Subscriber<std_msgs::Bool> subCandleLit("candle/is_lit", cbCandleIsLit);
+ros::Subscriber<geometry_msgs::Point> subCandlePosition("candle/position", cbCandlePosition);
+
+/**** Copied from pubsub example for testing purposes ****/
+std_msgs::String str_msg;
+ros::Publisher chatter("chatter", &str_msg);
+char hello[13] = "hello world!";
+/**/
+
+
+/* examples from SQRL:  */
 // std_msgs::Float32 left_ang_vel_msg;
 // ros::Publisher left_ang_vel_pub("sqrl/encoder/left_ang_vel", &left_ang_vel_msg);
 

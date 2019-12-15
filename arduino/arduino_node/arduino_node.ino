@@ -1,20 +1,22 @@
 /*@author Kirk Boyd*/
 #include "ros_node.h"    // Import tab containing ROS related code
-#include "encoders.h"   // Import tab containing encoder related code
+#include "legLimits.h"   // Import tab containing lots of position and index data
 
 void setup() {
     nh.initNode();                    // Initialize ROS node
     nh.subscribe(subCandlePosition);
     nh.subscribe(subCandleFound);
     nh.subscribe(subCandleLit);
-}
+    nh.advertise(chatter); // for testing purposes
+}// end void setup
 
 void loop() {
-    nh.spinOnce();
-    if (!candleFound){
-        fwd();
-    }
-    if ()
+//    if (!candleFound){
+//       / fwd();
+//    /}
+    str_msg.data = hello;
+    chatter.publish( &str_msg );
+    //if ()
     // if (command == 0){
     //     stand();
     // }
@@ -30,5 +32,5 @@ void loop() {
     // else if(command == 4){
     //     back();
     // }
-
-}
+    nh.spinOnce();
+}// end void loop
