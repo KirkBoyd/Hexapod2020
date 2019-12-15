@@ -1,0 +1,62 @@
+L:
+  F:
+    COX:   
+      fwd: 448
+      back: 576
+    FEM:
+      up:  
+      down:  
+    TIB: 
+      up:  
+      down:  
+  M:
+    COX:   
+      fwd: 448
+      back: 576
+    FEM: 
+      up:  
+      down:  
+    TIB: 
+      up:  
+      down:  
+  B:
+    COX:   
+      fwd: 448
+      back: 576
+    FEM:
+      up:  
+      down:  
+    TIB:
+      up:  
+      down:  
+R:
+  F:
+    COX:   
+      fwd: 448
+      back: 576
+    FEM:
+      up: 640
+      down: 400
+    TIB:
+      up: 
+      down: 
+  M:
+    COX:   
+      fwd: 448
+      back: 576
+    FEM:
+      up: 448
+      down: 600
+    TIB: 
+      up: 
+      down: 
+  B:
+    COX:   
+      fwd: 448
+      back: 576
+    FEM:
+      up: 448
+      down: 620
+    TIB:
+      up: 
+      down: 

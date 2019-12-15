@@ -3,7 +3,9 @@
 //ensure the connection is plugged into both digital ports 18 [TXD1] and 19 [RXD1]
 //on the DFROBOT Bluno Mega 2560 */
 
-#define waitTime 100
+#define waitTime 350
+#define shortWait 50
+#define longWait 2000 //for debug purposes
 
 #define CFR 1
 #define CMR 2
@@ -126,20 +128,22 @@ void setup() {
   Serial.begin(9600);
   stand();
   delay(1500);
-  
 }
 
 void loop() {
-  //SetPosition(2,600);
-   fwd();
-  //relaxAll();
-  //coxCtr();
-  //toesUp();
-  
-//  stand();
-//  //femUp();
-//
-//  delay(500);
-//  relaxAll();
+  turnL();
+//  oddsDown();
 //  delay(1000);
+//  oddsCW();
+//  delay(1000);
+//  evensCCW();
+//  delay(1000);
+//  oddsUp();
+//  delay(shortWait);
+//  evensDown();
+//  delay(1000);
+//  evensCW();
+//  delay(1000);
+//  oddsCCW();
+//  delay(10000);/
 }

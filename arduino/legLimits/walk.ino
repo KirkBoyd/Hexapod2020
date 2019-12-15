@@ -2,15 +2,57 @@ void fwd(){
   evensDown();
   delay(waitTime);
   oddsUp();
+  delay(shortWait);
   oddsFwd();
+  delay(shortWait);
   evensBack();
   delay(waitTime);
   oddsDown();
   delay(waitTime);
   evensUp();
+  delay(shortWait);
   evensFwd();
+  delay(shortWait);
   oddsBack();
   delay(waitTime);
+}
+void turnL(){
+  oddsDown();
+    delay(waitTime);
+  evensUp();
+    delay(shortWait);
+  evensCCW();
+    delay(shortWait);
+  oddsCW();
+    delay(shortWait);
+  evensDown();
+    delay(waitTime);
+  oddsUp();
+    delay(shortWait);
+  oddsCCW();
+    delay(shortWait);
+  evensCCW();
+    delay(shortWait);
+}
+void oddsCW(){
+  SetPosition(CFR, CFRback);
+  SetPosition(CRR, CRRback);
+  SetPosition(CML, CMLfwd);
+}
+void oddsCCW(){
+  SetPosition(CFR, CFRfwd);
+  SetPosition(CRR, CRRfwd);
+  SetPosition(CML, CMLback);
+}
+void evensCW(){
+  SetPosition(CMR, CMRback);
+  SetPosition(CRL, CRLfwd);
+  SetPosition(CFL, CFLfwd);
+}
+void evensCCW(){
+  SetPosition(CMR, CMRfwd);
+  SetPosition(CRL, CRLback);
+  SetPosition(CFL, CFLback);
 }
 void oddsFwd(){
   SetPosition(CFR, CFRfwd);
