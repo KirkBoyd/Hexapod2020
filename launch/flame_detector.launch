@@ -1,0 +1,4 @@
+<launch>                                                                        
+  <node pkg="hexapod" type="flame_detector.py" name="flame_detector" />
+
+</launch>

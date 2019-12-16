@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find hexapod)/launch/d435i.launch"/>
+  <include file="$(find hexapod)/launch/pointcloud_to_laserscan.launch"/>
+</launch>

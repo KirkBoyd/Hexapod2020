@@ -49,6 +49,7 @@ Processing enabled by this node:
   <!-- Camera device specific arguments -->
 
   <arg name="serial_no"           default=""/>
+  <!-- <arg name="json_file_path"      default="/home/kirk/hex_ws/src/hexapod/config/d415_min.json"/> -->
   <arg name="json_file_path"      default=""/>
 
   <arg name="fisheye_width"       default="640"/>
