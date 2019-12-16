@@ -2,14 +2,17 @@
 #include "ros_node.h"    // Import tab containing ROS related code
 #include "legLimits.h"   // Import tab containing lots of position and index data
 const int thresh = 0;
-
+#define versaPin 7
 void setup() {
+    pinMode(versaPin,OUTPUT);
+    digitalWrite(versaPin,LOW);
     nh.initNode();                    // Initialize ROS node
     nh.subscribe(subCandlePosition);
     nh.subscribe(subCandleFound);
     nh.subscribe(subCandleLit);
     nh.advertise(chatter); // for testing purposes
     nh.subscribe(beginTest);
+    //extinguish();
 }// end void setup
 
 void loop() {

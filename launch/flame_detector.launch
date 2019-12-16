@@ -1,4 +1,5 @@
 <launch>                                                                        
   <node pkg="hexapod" type="flame_detector.py" name="flame_detector" />
+  <!-- <include file="$(find hexapod)/launch/rs_laser.launch"/> -->
 
 </launch>

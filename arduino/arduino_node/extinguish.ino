@@ -1,18 +1,16 @@
-#define versaPin 14
-
 void extinguish(){
   stand();
-  delay(longWait);
+  delay(longWait/2);
   digitalWrite(versaPin, HIGH);
-  delay(waitTime);
+  delay(longWait/2);
   digitalWrite(versaPin, LOW);
-  delay(waitTime);
+  delay(longWait/2);
   digitalWrite(versaPin, HIGH);
-  delay(waitTime);
+  delay(longWait/2);
   digitalWrite(versaPin, LOW);
-  delay(waitTime);
+  delay(longWait/2);
   digitalWrite(versaPin, HIGH);
-  delay(waitTime);
+  delay(longWait/2);
   digitalWrite(versaPin, LOW);
-  delay(waitTime);
+  delay(longWait/2);
 }
