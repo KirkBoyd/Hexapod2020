@@ -1,6 +1,7 @@
 /*@author Kirk Boyd*/
 #include "ros_node.h"    // Import tab containing ROS related code
 #include "legLimits.h"   // Import tab containing lots of position and index data
+const int thresh = 0;
 
 void setup() {
     nh.initNode();                    // Initialize ROS node
@@ -8,12 +9,32 @@ void setup() {
     nh.subscribe(subCandleFound);
     nh.subscribe(subCandleLit);
     nh.advertise(chatter); // for testing purposes
+    nh.subscribe(beginTest);
 }// end void setup
 
 void loop() {
-//    if (!candleFound){
-//       / fwd();
-//    /}
+    if(goTime){
+        if (!candleFound){
+          fwd();
+        }
+        else if(candleLit){
+          if (candleY < thresh){
+            extinguish();
+          }
+          else if(candleX>0){
+            turnR();
+          }
+          else if(candleX<0){
+            turnL();
+          }
+          else{
+            fwd();
+          }
+        }
+    }
+    else{
+      stand();
+    }
     str_msg.data = hello;
     chatter.publish( &str_msg );
     //if ()

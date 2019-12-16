@@ -18,16 +18,16 @@ vel.angular.z = 0
 
 
 def callback(msg):
-    print (msg.ranges[180])
-    if (msg.ranges[360] < 1.5):
-        vel.linear.x = 0
-        vel.angular.z = 0.25
-    elif (msg.ranges[180] < 1):
-        vel.linear.x = 0
-        vel.angular.z = 0.25
-    else:
-        vel.linear.x = 0.5
-        vel.angular.z = 0
+    # print (msg.ranges[180])
+    # if (msg.ranges[360] < 1.5):
+    #     vel.linear.x = 0
+    #     vel.angular.z = 0.25
+    # elif (msg.ranges[180] < 1):
+    #     vel.linear.x = 0
+    #     vel.angular.z = 0.25
+    # else:
+    #     vel.linear.x = 0.5
+    #     vel.angular.z = 0
 # need to modify so that we have array values for depth
 # should be a depth for each angle
 # this publishes op=ur depth data, and we do the math here, and just pass a distance from the candle

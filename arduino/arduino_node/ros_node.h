@@ -7,6 +7,7 @@
 
 ros::NodeHandle  nh;
 
+bool goTime = false;
 bool candleFound = false;
 bool candleLit = false;
 float candleX = 0; //may need to change type
@@ -25,12 +26,15 @@ void cbCandlePosition(const geometry_msgs::Point& msg){
     candleX = msg.x;
     candleY = msg.y;
 }
+void cbStartTest(const std_msgs::Bool& msg){
+    goTime = msg.data;
+}
 
 // create subscribers //
 ros::Subscriber<std_msgs::Bool> subCandleFound("candle/found", cbCandleFound);
 ros::Subscriber<std_msgs::Bool> subCandleLit("candle/is_lit", cbCandleIsLit);
 ros::Subscriber<geometry_msgs::Point> subCandlePosition("candle/position", cbCandlePosition);
-
+ros::Subscriber<std_msgs::Bool> beginTest("demo/start", cbStartTest);
 /**** Copied from pubsub example for testing purposes ****/
 std_msgs::String str_msg;
 ros::Publisher chatter("chatter", &str_msg);

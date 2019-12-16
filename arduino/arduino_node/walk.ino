@@ -31,6 +31,24 @@ void turnL(){
     delay(shortWait);
   oddsCCW();
     delay(shortWait);
+  evensCW();
+    delay(shortWait);
+}
+void turnR(){
+  oddsDown();
+    delay(waitTime);
+  evensUp();
+    delay(shortWait);
+  evensCW();
+    delay(shortWait);
+  oddsCCW();
+    delay(shortWait);
+  evensDown();
+    delay(waitTime);
+  oddsUp();
+    delay(shortWait);
+  oddsCW();
+    delay(shortWait);
   evensCCW();
     delay(shortWait);
 }
