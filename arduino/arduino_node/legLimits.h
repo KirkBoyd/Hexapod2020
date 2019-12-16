@@ -3,7 +3,7 @@
 //ensure the connection is plugged into both digital ports 18 [TXD1] and 19 [RXD1]
 //on the DFROBOT Bluno Mega 2560 */
 
-#define waitTime 350
+#define waitTime 150
 #define shortWait 50
 #define longWait 2000 //for debug purposes
 

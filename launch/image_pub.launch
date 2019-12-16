@@ -4,12 +4,16 @@
   <node pkg="nodelet" type="nodelet" name="image_publisher"
         args="load image_publisher/image_publisher manager">
     <!-- <param name="filename" value="$(find rviz)/images/splash.png" /> -->
-    <param name="filename" value="/home/kirk/hex_ws/src/hexapod/img/flame5.jpg" />
-    
+    <!-- <param name="filename" value="/home/kirk/hex_ws/src/hexapod/img/flame5.jpg" /> -->
+    <param name="filename" value="/home/kirk/hex_ws/src/hexapod/img/candle_860x640.png" />
+
     <param name="flip_horizontal" value="false" />
     <param name="flip_vertical" value="false" />
   </node>
   <param name="/manager/frame_id" value="camera" />
   <param name="/manager/publish_rate" value="1" />
   <!-- <param name="camera_info_url" value="file:///$(env HOME)/.ros/camera_info/camera.yaml" />  relative to ~/.ros/ -->
+
+  <arg name="rvizconfig" default="$(find hexapod)/config/hexapod.rviz" />
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" />
 </launch>

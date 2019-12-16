@@ -12,32 +12,49 @@ void setup() {
     nh.subscribe(subCandleLit);
     nh.advertise(chatter); // for testing purposes
     nh.subscribe(beginTest);
+    stand();
     //extinguish();
 }// end void setup
 
 void loop() {
-    if(goTime){
-        if (!candleFound){
-          fwd();
-        }
-        else if(candleLit){
-          if (candleY < thresh){
-            extinguish();
-          }
-          else if(candleX>0){
-            turnR();
-          }
-          else if(candleX<0){
-            turnL();
-          }
-          else{
-            fwd();
-          }
-        }
-    }
-    else{
+  if(goTime){
+      fwd();
+      fwd();
+      fwd();
+      fwd();
+      fwd();
+      fwd();
+      fwd();
+      fwd();
+      fwd();
+      extinguish();
       stand();
-    }
+      delay(1000000000);
+///    if(!candleFound){fwd();}
+//  /  else if(candleLit){extinguish();}
+  }
+//    if(goTime){
+//        if (!candleFound){
+//          fwd();
+//        }
+//        else if(candleLit){
+//          if (candleY < thresh){
+//            extinguish();
+//          }
+//          else if(candleX>0){
+//            turnR();
+//          }
+//          else if(candleX<0){
+//            turnL();
+//          }
+//          else{
+//            fwd();
+//          }
+//        }
+//    }
+//    else{
+//      stand();
+//    }
     str_msg.data = hello;
     chatter.publish( &str_msg );
     //if ()

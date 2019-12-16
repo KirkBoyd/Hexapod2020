@@ -2,4 +2,6 @@
 <launch>
   <include file="$(find hexapod)/launch/d435i.launch"/>
   <include file="$(find hexapod)/launch/pointcloud_to_laserscan.launch"/>
+  <!-- <include file="$(find hexapod)/launch/flame_detector.launch"/> -->
+
 </launch>
