@@ -14,19 +14,19 @@ vis = False
 candleFound = False
 #frame is numpy array of image
 # frame = cv2.imread('/home/kirk/hex_ws/src/hexapod/img/flame5.jpg',1)
-max_bbox_length = 500
-min_bbox_length = 50
-min_point_list = 25
-empty = Point(0,0,0) 
+max_bbox_length = 500 # defines maximum boundary box length
+min_bbox_length = 50  # defines minimum boundary box length
+min_point_list = 25 # defines number of points to be used for {_____}
+empty = Point(0,0,0)  # defines an empty point to be populated as a message output
 
-bridge = CvBridge()
+bridge = CvBridge() # converts ROS image message to CV image
 
-candle_bbox_pub = rospy.Publisher("/candle/bbox",Image,queue_size=1)
-position_pub = rospy.Publisher('/candle/pixel_position', Point,queue_size=1)
-found_pub = rospy.Publisher('/candle/found', Bool,queue_size=1)
-lit_pub = rospy.Publisher('/candle/lit', Bool,queue_size=1)
+candle_bbox_pub = rospy.Publisher("/candle/bbox",Image,queue_size=1) #candle boundary box publisher
+position_pub = rospy.Publisher('/candle/pixel_position', Point,queue_size=1)  #candle center position publisher
+found_pub = rospy.Publisher('/candle/found', Bool,queue_size=1) #boolean message publisher if candle is found
+lit_pub = rospy.Publisher('/candle/lit', Bool,queue_size=1) #boolean message publisher if candle is lit
 
-def imageCallback(msg):
+def imageCallback(msg): #callback function for {___}
   rospy.loginfo("Callback")
   cvImg = bridge.imgmsg_to_cv2(msg, desired_encoding="bgr8")
   # cvImg = bridge.imgmsg_to_cv2(msg, desired_encoding="passthrough")
@@ -59,11 +59,11 @@ def overlayBbox(cvImg,point_list):
   cvImgWithBbox = cv2.resize(cvImg, dsize)
   return cvImgWithBbox
 
-def findFlameCenter(cvImg):
+def findFlameCenter(cvImg): #finds center of detected flame
 
-  blur = cv2.GaussianBlur(cvImg, (21, 21), 0)
+  blur = cv2.GaussianBlur(cvImg, (21, 21), 0) #blurs image with Gaussian filter (low pass filter) to reduce edge noise
   # hsv = cv2.cvtColor(blur, cv2.COLOR_RGB2HSV)
-  hsv = cv2.cvtColor(blur, cv2.COLOR_BGR2HSV)
+  hsv = cv2.cvtColor(blur, cv2.COLOR_BGR2HSV) #converts blurred image to 0 or 1 based on colour
 
   lower = [18, 50, 50]
   upper = [35, 255, 255]
