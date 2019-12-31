@@ -13,7 +13,7 @@ from cv_bridge import CvBridge, CvBridgeError
 vis = False
 candleFound = False
 #frame is numpy array of image
-# frame = cv2.imread('/home/kirk/hex_ws/src/hexapod/img/flame5.jpg',1)
+# frame = cv2.imread('/home/kirk/hex_ws/src/hexapod/img/flame5.jpg',1) #comment out when using realsense
 max_bbox_length = 500 # defines maximum boundary box length
 min_bbox_length = 50  # defines minimum boundary box length
 min_point_list = 25 # defines number of points to be used for {_____}
