@@ -86,20 +86,96 @@ even_coxa:
   type: position_controllers/JointPositionController
   joints:
     - R_M_COX_joint
-    - R_M_FEM_joint
-    - R_M_TIB_joint
     - L_F_COX_joint
-    - L_F_FEM_joint
-    - L_F_TIB_joint
     - L_B_COX_joint
-    - L_B_FEM_joint
-    - L_B_TIB_joint
   gains:
     R_M_COX_joint:
       p: 100
       d: 1
       i: 1
       i_clamp: 1
+    L_F_COX_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    L_B_COX_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+odd_coxa:
+  type: position_controllers/JointPositionController
+  joints:
+    - R_F_COX_joint
+    - R_B_COX_joint
+    - L_M_COX_joint
+  gains:
+    R_F_COX_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    R_B_COX_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    L_M_COX_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+odd_toes:
+  type: position_controllers/JointPositionController
+  joints:
+    - R_F_FEM_joint
+    - R_F_TIB_joint
+    - R_B_FEM_joint
+    - R_B_TIB_joint
+    - L_M_FEM_joint
+    - L_M_TIB_joint
+  gains:
+    R_F_FEM_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    R_F_TIB_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    R_B_FEM_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    R_B_TIB_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    L_M_FEM_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    L_M_TIB_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+even_toes:
+  type: position_controllers/JointPositionController
+  joints:
+    - R_M_FEM_joint
+    - R_M_TIB_joint
+    - L_B_FEM_joint
+    - L_B_TIB_joint
+    - L_F_FEM_joint
+    - L_F_TIB_joint
+  gains:
     R_M_FEM_joint:
       p: 100
       d: 1
@@ -110,7 +186,12 @@ even_coxa:
       d: 1
       i: 1
       i_clamp: 1
-    L_F_COX_joint:
+    L_B_FEM_joint:
+      p: 100
+      d: 1
+      i: 1
+      i_clamp: 1
+    L_B_TIB_joint:
       p: 100
       d: 1
       i: 1
@@ -121,21 +202,6 @@ even_coxa:
       i: 1
       i_clamp: 1
     L_F_TIB_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    L_B_COX_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    L_B_FEM_joint:
-      p: 100
-      d: 1
-      i: 1
-      i_clamp: 1
-    L_B_TIB_joint:
       p: 100
       d: 1
       i: 1
